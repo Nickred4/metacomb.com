@@ -27,7 +27,6 @@ body{ background:#fff; color:var(--ink); font-family:'Inter',sans-serif; -webkit
 .bleed{ margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); width:100vw; }
 a{ color:inherit; }
 
-/* ---- top nav ---- */
 .topnav{ display:flex; align-items:center; justify-content:space-between; padding:1.5rem 0; }
 .brand{ font-weight:800; font-size:1.4rem; letter-spacing:-0.02em; }
 .brand small{ display:block; font-weight:400; font-size:.68rem; color:var(--gray-1); letter-spacing:0; }
@@ -36,7 +35,6 @@ a{ color:inherit; }
 .topnav-links a:hover{ color:var(--amber); }
 @media (max-width:900px){ .topnav-links{ display:none; } }
 
-/* ---- hero ---- */
 .hero{ position:relative; padding: 3.5rem 0 0; overflow:hidden; }
 .hex-graphic{ position:absolute; top:-4rem; right:-6rem; width:640px; height:640px; z-index:0; pointer-events:none; }
 @media (max-width:900px){ .hex-graphic{ display:none; } }
@@ -47,12 +45,10 @@ a{ color:inherit; }
 .anchor-row a{ text-decoration:none; }
 .anchor-row a:hover{ color:var(--amber); }
 
-/* ---- section label pattern ---- */
 .eyebrow-label{ font-weight:700; font-size:.9rem; margin-bottom:.5rem; }
 .section-h{ font-weight:800; font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-0.02em; margin-bottom:2.5rem; }
 .section{ padding: 4.5rem 0; }
 
-/* ---- USP icon row ---- */
 .usp-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:2rem; margin-bottom:3rem; }
 @media (max-width:900px){ .usp-row{ grid-template-columns:repeat(2,1fr); } }
 .usp-icon{ width:76px; height:76px; border:1px dashed var(--line); border-radius:6px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; font-size:1.7rem; color:var(--gray-2); background:
@@ -61,7 +57,6 @@ a{ color:inherit; }
 .usp-label{ color:var(--gray-2); font-size:.95rem; margin-bottom:.4rem; }
 .usp-stat{ font-weight:700; font-size:1.15rem; line-height:1.35; }
 
-/* ---- full bleed gallery ---- */
 .gallery-row{ display:grid; grid-template-columns:repeat(4,1fr); }
 @media (max-width:900px){ .gallery-row{ grid-template-columns:repeat(2,1fr); } }
 .gallery-cell{ aspect-ratio:3/4; position:relative; overflow:hidden; }
@@ -71,7 +66,6 @@ a{ color:inherit; }
 }
 .ribbed{ background-size: 10px 100%; background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.16) 0 2px, transparent 2px 10px); }
 
-/* ---- product overview variants ---- */
 .variant-tile{ border:1px solid var(--line); }
 .variant-swatch{ height:130px; }
 .variant-meta{ padding:.9rem 1rem 1.1rem; }
@@ -82,11 +76,9 @@ a{ color:inherit; }
 .spec-tile .num{ font-weight:800; font-size:1.3rem; }
 .spec-tile .desc{ color:var(--gray-1); font-size:.85rem; margin-top:.3rem; }
 
-/* ---- process ---- */
 .process-step{ display:flex; gap:1.25rem; margin-bottom:2rem; }
 .process-num{ font-weight:800; font-size:1.1rem; color:var(--gray-2); flex:none; width:2.5rem; }
 
-/* ---- FAQ ---- */
 .faq-item{ border-bottom:1px solid var(--line); padding:1.5rem 0; }
 .faq-item summary{ font-weight:700; font-size:1.05rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; }
 .faq-item summary::-webkit-details-marker{ display:none; }
@@ -94,18 +86,20 @@ a{ color:inherit; }
 .faq-item[open] summary .plus{ transform:rotate(45deg); display:inline-block; }
 .faq-item p{ color:var(--gray-1); margin:1rem 0 0; max-width:65ch; }
 
-/* ---- CTA / join section ---- */
 .join-section{ position:relative; background:var(--hex-fill); overflow:hidden; padding:5rem 0; }
 .join-hex{ position:absolute; inset:0; z-index:0; opacity:.9; }
 .join-inner{ position:relative; z-index:1; max-width:640px; }
 .join-inner h2{ font-weight:800; font-size:clamp(2rem,4vw,3rem); letter-spacing:-0.02em; margin-bottom:1.25rem; }
 .join-inner p{ color:var(--gray-1); font-size:1.05rem; margin-bottom:2rem; max-width:52ch; }
-.join-form{ display:flex; gap:.75rem; flex-wrap:wrap; }
-.join-form input{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:.9rem 1rem; flex:1 1 220px; font-size:.95rem; }
-.join-form button{ background:var(--ink); color:#fff; border:none; border-radius:2px; padding:.9rem 2rem; font-weight:700; font-size:.95rem; }
+.join-form{ display:grid; gap:.9rem; max-width:480px; }
+.join-form input,
+.join-form textarea{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:.9rem 1rem; font-size:.95rem; font-family:inherit; width:100%; }
+.join-form textarea{ resize:vertical; }
+.join-form label{ font-size:.8rem; font-weight:600; color:var(--gray-1); margin-bottom:.35rem; display:block; }
+.join-form button{ background:var(--ink); color:#fff; border:none; border-radius:2px; padding:.9rem 2rem; font-weight:700; font-size:.95rem; justify-self:start; }
 .join-form button:hover{ background:var(--amber); }
+.join-form .fine{ font-size:.78rem; color:var(--gray-2); margin-top:-.3rem; }
 
-/* ---- footer ---- */
 .footer-mc{ background:var(--ink); color:rgba(255,255,255,0.6); padding:4rem 0 2rem; }
 .footer-mc .brand{ color:#fff; }
 .footer-mc .brand small{ color:rgba(255,255,255,0.5); }
@@ -122,7 +116,6 @@ a{ color:inherit; }
   <div class="disclaimer"><i class="ti ti-info-circle me-1"></i> Mockup notice: finishes, dimensions and stats here are placeholders for layout — replace with MetaComb's verified spec sheet, especially anything load-bearing or fire/acoustic-rated, before this goes live.</div>
 </div>
 
-<!-- TOP NAV -->
 <div class="container-xl">
   <div class="topnav">
     <div class="brand">MetaComb<small>Honeycomb Composite Materials</small></div>
@@ -130,13 +123,12 @@ a{ color:inherit; }
       <a href="#overview">Products</a>
       <a href="#">Projects</a>
       <a href="#">About Us</a>
-      <a href="#">News</a>
+      <a href="#">news</a>
       <a href="#">Contact</a>
     </div>
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <svg class="hex-graphic" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
     <polygon points="480,40 620,120 620,280 480,360 340,280 340,120" fill="var(--hex-fill)"/>
@@ -157,7 +149,6 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- IMPRESSIONS -->
 <section class="section" id="impressions">
   <div class="container-xl">
     <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
@@ -175,7 +166,6 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- OVERVIEW -->
 <section class="section" id="overview">
   <div class="container-xl">
     <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
@@ -230,7 +220,6 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- HOW IT'S MADE -->
 <section class="section" id="made" style="background:var(--hex-fill);">
   <div class="container-xl">
     <div class="row">
@@ -250,7 +239,6 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section">
   <div class="container-xl">
     <div class="row">
@@ -285,7 +273,6 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- JOIN / CTA -->
 <section class="join-section">
   <svg class="join-hex" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#E3E1DA" stroke-width="1.5">
@@ -302,16 +289,35 @@ a{ color:inherit; }
     <div class="join-inner">
       <h2>Order a sample</h2>
       <p>Not sure which finish is right for you? Order a physical sample for just $20 and see the quality up close before committing to your project. Your $20 will be credited toward your final order once you're ready to move forward.</p>
-      <form class="join-form" onsubmit="return false;">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="E-mail">
-        <button type="submit">Sign up</button>
+
+      <form class="join-form" id="sampleOrderForm">
+        <div>
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div>
+          <label for="address">Shipping address</label>
+          <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, Zip"></textarea>
+        </div>
+        <div>
+          <label for="paymentNote">Payment note</label>
+          <textarea id="paymentNote" name="paymentNote" rows="2" placeholder="e.g. will pay via Venmo/Zelle on request"></textarea>
+        </div>
+        <button type="submit">Send sample request — $20</button>
+        <p class="fine">This opens your email client with your order details filled in. Nothing is charged automatically — we'll follow up to confirm payment.</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer-mc">
   <div class="container-xl">
     <div class="row g-4 mb-5">
@@ -330,7 +336,7 @@ a{ color:inherit; }
         <a href="#">About</a>
         <a href="#">Patents</a>
         <a href="#">Careers</a>
-        <a href="#">News</a>
+        <a href="#">news</a>
       </div>
       <div class="col-6 col-lg-3">
         <h4>Contact</h4>
@@ -346,5 +352,37 @@ a{ color:inherit; }
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
+<script>
+  document.getElementById('sampleOrderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var fullName = document.getElementById('fullName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var address = document.getElementById('address').value.trim();
+    var paymentNote = document.getElementById('paymentNote').value.trim();
+
+    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
+    var subject = 'Sample Order — $20 (' + fullName + ')';
+
+    var bodyLines = [
+      'New sample order request:',
+      '',
+      'Name: ' + fullName,
+      'Email: ' + email,
+      'Phone: ' + (phone || '—'),
+      'Shipping address: ' + address,
+      'Payment note: ' + (paymentNote || '—'),
+      '',
+      'Order amount: $20 (credited toward final order)'
+    ];
+
+    var mailtoLink = 'mailto:' + recipient +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+    window.location.href = mailtoLink;
+  });
+</script>
 </body>
 </html>
