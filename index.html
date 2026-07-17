@@ -31,23 +31,69 @@ a{ color:inherit; }
 .brand{ font-weight:800; font-size:1.4rem; letter-spacing:-0.02em; }
 .brand small{ display:block; font-weight:400; font-size:.68rem; color:var(--gray-1); letter-spacing:0; }
 .topnav-links{ display:flex; gap:2.25rem; font-size:.95rem; }
-.topnav-links a{ text-decoration:none; }
-.topnav-links a:hover{ color:var(--amber); }
+.topnav-links > a{ text-decoration:none; }
+.topnav-links > a:hover{ color:var(--amber); }
 @media (max-width:900px){ .topnav-links{ display:none; } }
 
+.nav-item{ position:relative; }
+.nav-item > .nav-trigger{
+  display:flex; align-items:center; gap:.3rem;
+  cursor:pointer; text-decoration:none; background:none; border:none;
+  font-size:.95rem; font-family:inherit; color:inherit; padding:0;
+}
+.nav-item > .nav-trigger:hover{ color:var(--amber); }
+.nav-item > .nav-trigger .caret{ font-size:.6rem; margin-top:2px; color:var(--gray-2); transition:transform .15s ease; }
+.nav-item:hover > .nav-trigger .caret{ transform:rotate(180deg); }
+
+.nav-dropdown{
+  position:absolute; top:calc(100% + 1rem); left:50%; transform:translateX(-50%);
+  background:#fff; border:1px solid var(--line); border-radius:6px;
+  min-width:200px; padding:.5rem; box-shadow:0 12px 24px rgba(0,0,0,0.08);
+  opacity:0; visibility:hidden; transform:translateX(-50%) translateY(6px);
+  transition:opacity .15s ease, transform .15s ease, visibility .15s ease;
+  z-index:50;
+}
+.nav-item:hover .nav-dropdown{
+  opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+}
+.nav-dropdown a{
+  display:block; padding:.55rem .75rem; border-radius:4px;
+  font-size:.9rem; text-decoration:none; color:var(--ink);
+}
+.nav-dropdown a:hover{ background:var(--hex-fill); color:var(--amber); }
+
 .hero{ position:relative; padding: 3.5rem 0 0; overflow:hidden; }
-.hex-graphic{ position:absolute; top:-4rem; right:-6rem; width:640px; height:640px; z-index:0; pointer-events:none; }
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.85) 100%);
+  z-index:1;
+}
+
+.hex-graphic{ position:absolute; top:-4rem; right:-6rem; width:640px; height:640px; z-index:1; pointer-events:none; opacity:.18; }
 @media (max-width:900px){ .hex-graphic{ display:none; } }
-.hero-inner{ position:relative; z-index:1; max-width:760px; }
-.hero h1{ font-weight:800; font-size:clamp(2.6rem,6vw,5.2rem); line-height:0.98; letter-spacing:-0.02em; margin:0 0 1.5rem; }
-.hero p.lead{ font-size:1.15rem; color:var(--gray-1); max-width:46ch; line-height:1.5; margin-bottom:2.75rem; }
-.anchor-row{ display:flex; gap:2.25rem; font-weight:700; font-size:.95rem; padding-bottom:1.75rem; border-bottom:1px solid var(--ink); }
-.anchor-row a{ text-decoration:none; }
+.hero-inner{ position:relative; z-index:2; max-width:760px; }
+.hero h1{ font-weight:800; font-size:clamp(2.6rem,6vw,5.2rem); line-height:0.98; letter-spacing:-0.02em; margin:0 0 1.5rem; color:#fff; }
+.hero p.lead{ font-size:1.15rem; color:rgba(255,255,255,0.78); max-width:46ch; line-height:1.5; margin-bottom:2.75rem; }
+.anchor-row{ display:flex; gap:2.25rem; font-weight:700; font-size:.95rem; padding-bottom:1.75rem; border-bottom:1px solid rgba(255,255,255,0.3); }
+.anchor-row a{ text-decoration:none; color:#fff; }
 .anchor-row a:hover{ color:var(--amber); }
 
 .eyebrow-label{ font-weight:700; font-size:.9rem; margin-bottom:.5rem; }
 .section-h{ font-weight:800; font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-0.02em; margin-bottom:2.5rem; }
 .section{ padding: 4.5rem 0; }
+.section-sub{ padding: 3rem 0; border-top:1px solid var(--line); }
+.subsection-h{ font-weight:800; font-size:clamp(1.5rem,3vw,2.1rem); letter-spacing:-0.02em; margin-bottom:1rem; }
 
 .usp-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:2rem; margin-bottom:3rem; }
 @media (max-width:900px){ .usp-row{ grid-template-columns:repeat(2,1fr); } }
@@ -78,6 +124,22 @@ a{ color:inherit; }
 
 .process-step{ display:flex; gap:1.25rem; margin-bottom:2rem; }
 .process-num{ font-weight:800; font-size:1.1rem; color:var(--gray-2); flex:none; width:2.5rem; }
+
+.team-card{ text-align:center; }
+.team-avatar{ width:100%; aspect-ratio:1/1; border-radius:6px; background:var(--hex-fill); border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--gray-2); margin-bottom:1rem; }
+.team-name{ font-weight:700; }
+.team-role{ color:var(--gray-1); font-size:.9rem; }
+
+.benefit-tile{ border:1px solid var(--line); padding:1.5rem; height:100%; }
+.benefit-tile .ti{ font-size:1.6rem; color:var(--amber); margin-bottom:.75rem; display:block; }
+.benefit-tile .h4{ margin-bottom:.5rem; }
+
+.case-card{ border:1px solid var(--line); overflow:hidden; }
+.case-card .case-img{ aspect-ratio:16/10; background:var(--hex-fill); }
+.case-card .case-body{ padding:1.25rem; }
+.case-card .case-tag{ font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--gray-2); font-weight:600; margin-bottom:.4rem; }
+.case-card .case-title{ font-weight:700; margin-bottom:.4rem; }
+.case-card .case-desc{ color:var(--gray-1); font-size:.9rem; }
 
 .faq-item{ border-bottom:1px solid var(--line); padding:1.5rem 0; }
 .faq-item summary{ font-weight:700; font-size:1.05rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; }
@@ -120,11 +182,42 @@ a{ color:inherit; }
   <div class="topnav">
     <div class="brand">MetaComb<small>Honeycomb Composite Materials</small></div>
     <div class="topnav-links">
-      <a href="#overview">Products</a>
-      <a href="#">Projects</a>
-      <a href="#">About Us</a>
-      <a href="#">News</a>
-      <a href="#">Contact</a>
+
+      <div class="nav-item">
+        <span class="nav-trigger">About <span class="caret">▾</span></span>
+        <div class="nav-dropdown">
+          <a href="#about-company">Company</a>
+          <a href="#about-technology">Technology</a>
+          <a href="#about-team">Team</a>
+          <a href="#about-benefits">Benefits</a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-trigger">Markets <span class="caret">▾</span></span>
+        <div class="nav-dropdown">
+          <a href="#markets-installations">Installations</a>
+          <a href="#markets-case-studies">Case Studies</a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-trigger">Technology <span class="caret">▾</span></span>
+        <div class="nav-dropdown">
+          <a href="#tech-creative-solution">Creative Solution</a>
+          <a href="#tech-patented">Patented</a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-trigger">Product <span class="caret">▾</span></span>
+        <div class="nav-dropdown">
+          <a href="#product-examples">Examples</a>
+          <a href="#product-materials">MetaComb Materials</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </div>
@@ -149,6 +242,7 @@ a{ color:inherit; }
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="container-xl">
     <div class="row">
@@ -160,6 +254,7 @@ a{ color:inherit; }
     </div>
   </div>
 </section>
+
 <section class="section" id="impressions">
   <div class="container-xl">
     <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
@@ -284,6 +379,160 @@ a{ color:inherit; }
   </div>
 </section>
 
+<!-- ===================== ABOUT ===================== -->
+<section class="section" style="background:var(--hex-fill);">
+  <div class="container-xl">
+    <div class="eyebrow-label">About MetaComb</div>
+    <h2 class="section-h">About</h2>
+  </div>
+
+  <div class="container-xl section-sub" id="about-company" style="border-top:none;">
+    <h3 class="subsection-h">Company</h3>
+    <p class="text-secondary" style="max-width:65ch;">MetaComb Inc. is a materials company based in Boston's Seaport District, developing a patented honeycomb composite made from reclaimed corrugated cardboard. Replace with your real company narrative — founding story, mission, headquarters, and stage of the business.</p>
+  </div>
+
+  <div class="container-xl section-sub" id="about-technology">
+    <h3 class="subsection-h">Technology</h3>
+    <p class="text-secondary" style="max-width:65ch;">MetaComb's core manufacturing process converts waste cardboard into a rigid, lightweight honeycomb structure that can be laminated into decorative or structural panels. Replace with a technical summary of the process, IP, and what makes it different from incumbent materials.</p>
+  </div>
+
+  <div class="container-xl section-sub" id="about-team">
+    <h3 class="subsection-h">Team</h3>
+    <div class="row row-cards g-4 mt-1">
+      <div class="col-6 col-md-3">
+        <div class="team-card">
+          <div class="team-avatar"><i class="ti ti-user"></i></div>
+          <div class="team-name">Name Placeholder</div>
+          <div class="team-role">Role / Title</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="team-card">
+          <div class="team-avatar"><i class="ti ti-user"></i></div>
+          <div class="team-name">Name Placeholder</div>
+          <div class="team-role">Role / Title</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="team-card">
+          <div class="team-avatar"><i class="ti ti-user"></i></div>
+          <div class="team-name">Name Placeholder</div>
+          <div class="team-role">Role / Title</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="team-card">
+          <div class="team-avatar"><i class="ti ti-user"></i></div>
+          <div class="team-name">Name Placeholder</div>
+          <div class="team-role">Role / Title</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl section-sub" id="about-benefits">
+    <h3 class="subsection-h">Benefits</h3>
+    <div class="row row-cards g-4 mt-1">
+      <div class="col-md-4">
+        <div class="benefit-tile">
+          <i class="ti ti-recycle"></i>
+          <div class="h4">Sustainable</div>
+          <p class="text-secondary mb-0">Repurposes reclaimed corrugated cardboard instead of virgin wood-based materials.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-tile">
+          <i class="ti ti-feather"></i>
+          <div class="h4">Lightweight</div>
+          <p class="text-secondary mb-0">Substantially lighter than comparable rigid-panel building materials.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-tile">
+          <i class="ti ti-coin"></i>
+          <div class="h4">Low cost</div>
+          <p class="text-secondary mb-0">Simple, scalable manufacturing process keeps material costs competitive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARKETS ===================== -->
+<section class="section">
+  <div class="container-xl">
+    <div class="eyebrow-label">Where MetaComb is used</div>
+    <h2 class="section-h">Markets</h2>
+  </div>
+
+  <div class="container-xl section-sub" id="markets-installations" style="border-top:none;">
+    <h3 class="subsection-h">Installations</h3>
+    <p class="text-secondary mb-4" style="max-width:65ch;">Photos and details of completed MetaComb installations go here — decorative interior applications, wall assemblies, and structural projects.</p>
+    <div class="row row-cards g-3">
+      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
+      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
+      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="container-xl section-sub" id="markets-case-studies">
+    <h3 class="subsection-h">Case Studies</h3>
+    <p class="text-secondary mb-4" style="max-width:65ch;">Deeper write-ups on specific projects — the problem, why MetaComb was chosen, and the outcome.</p>
+    <div class="row row-cards g-3">
+      <div class="col-md-6"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Case Study</div><div class="case-title">Client / Project Name</div><div class="case-desc">Summary of the challenge, MetaComb's role, and measurable results.</div></div></div></div>
+      <div class="col-md-6"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Case Study</div><div class="case-title">Client / Project Name</div><div class="case-desc">Summary of the challenge, MetaComb's role, and measurable results.</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TECHNOLOGY ===================== -->
+<section class="section" style="background:var(--hex-fill);">
+  <div class="container-xl">
+    <div class="eyebrow-label">MetaComb Technology</div>
+    <h2 class="section-h">Technology</h2>
+  </div>
+
+  <div class="container-xl section-sub" id="tech-creative-solution" style="border-top:none;">
+    <h3 class="subsection-h">Creative Solution</h3>
+    <p class="text-secondary" style="max-width:65ch;">Describe the problem MetaComb solves and the creative approach behind turning waste cardboard into a structural honeycomb core — what makes the solution novel compared to existing composite panel materials.</p>
+  </div>
+
+  <div class="container-xl section-sub" id="tech-patented">
+    <h3 class="subsection-h">Patented</h3>
+    <p class="text-secondary" style="max-width:65ch;">MetaComb's manufacturing process is protected by a utility patent, with additional patents in progress. Add patent numbers, filing details, or a link to public patent filings here once available.</p>
+  </div>
+</section>
+
+<!-- ===================== PRODUCT (detail) ===================== -->
+<section class="section">
+  <div class="container-xl">
+    <div class="eyebrow-label">MetaComb Products</div>
+    <h2 class="section-h">Product</h2>
+  </div>
+
+  <div class="container-xl section-sub" id="product-examples" style="border-top:none;">
+    <h3 class="subsection-h">Examples</h3>
+    <p class="text-secondary mb-4" style="max-width:65ch;">Real-world examples of MetaComb panels in use — furniture, wall panels, packaging alternatives, or architectural details.</p>
+    <div class="gallery-row bleed">
+      <div class="gallery-cell ribbed" style="background-color:#E7E3D8;"><span class="tag">Example</span></div>
+      <div class="gallery-cell ribbed" style="background-color:#C98A2C;"><span class="tag">Example</span></div>
+      <div class="gallery-cell ribbed" style="background-color:#8A5A2A;"><span class="tag">Example</span></div>
+      <div class="gallery-cell ribbed" style="background-color:#2B2E2E;"><span class="tag">Example</span></div>
+    </div>
+  </div>
+
+  <div class="container-xl section-sub" id="product-materials">
+    <h3 class="subsection-h">MetaComb Materials</h3>
+    <p class="text-secondary mb-4" style="max-width:65ch;">Overview of the finishes and core thicknesses available across the Decorative Resin Panel and CSIP product lines.</p>
+    <div class="row row-cards g-3">
+      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Decorative</div><div class="desc">5 finish options, translucent core</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">CSIP</div><div class="desc">2&Prime;–6&Prime; core thicknesses</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Core material</div><div class="desc">Reclaimed corrugated cardboard</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Origin</div><div class="desc">Made in the USA</div></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="join-section">
   <svg class="join-hex" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#E3E1DA" stroke-width="1.5">
@@ -316,7 +565,7 @@ a{ color:inherit; }
         </div>
         <div>
           <label for="address">Shipping address</label>
-          <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, zip"></textarea>
+          <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, Zip"></textarea>
         </div>
         <div>
           <label for="paymentNote">Payment note</label>
@@ -329,7 +578,7 @@ a{ color:inherit; }
   </div>
 </section>
 
-<footer class="footer-mc">
+<footer class="footer-mc" id="contact">
   <div class="container-xl">
     <div class="row g-4 mb-5">
       <div class="col-12 col-lg-3">
@@ -344,8 +593,8 @@ a{ color:inherit; }
       </div>
       <div class="col-6 col-lg-3">
         <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Patents</a>
+        <a href="#about-company">About</a>
+        <a href="#tech-patented">Patents</a>
         <a href="#">Careers</a>
         <a href="#">News</a>
       </div>
