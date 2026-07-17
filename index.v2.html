@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MetaComb Honeycomb Composite Panels | MetaComb Inc.</title>
+
+<link rel="preconnect" href="https://rsms.me">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler-marketing.min.css">
+
+<style>
+:root{
+  --paper:    #FFFFFF;
+  --paper-2:  #F5F4F1;
+  --ink:      #1B1B19;
+  --line:     rgba(27,27,25,0.10);
+  --amber:    #C98A2C;
+  --bronze:   #8A5A2A;
+  --frost:    #C7CDCB;
+  --smoke:    #4A4C4D;
+  --clear:    #E7E3D8;
+  --graphite: #2B2E2E;
+  --cement:   #9CA0A0;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+body{ background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+h1,h2,h3,.font-display{ font-family: var(--font-display); letter-spacing: -0.01em; }
+.mono{ font-family: var(--font-mono); letter-spacing: 0.02em; }
+
+/* signature: honeycomb hex-strip divider, tied to the actual material structure */
+.hexrule{ height: 20px; width:100%; display:block; }
+.hexrule svg{ width:100%; height:100%; display:block; }
+
+/* ---- hero ---- */
+.hero-mc{ background: var(--paper); border-bottom: 1px solid var(--line); padding: 6rem 0 3rem; }
+.eyebrow{
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--amber);
+  display:inline-flex; align-items:center; gap:.5rem;
+}
+.hero-mc h1{ font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 600; line-height: 1.04; margin: 0.9rem 0 1.1rem; }
+.hero-mc p.lead{ max-width: 46ch; color: rgba(27,27,25,0.62); font-size: 1.05rem; }
+.pill-nav{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:2rem; }
+.pill-nav a{
+  font-family: var(--font-mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em;
+  padding:.5rem 1rem; border:1px solid var(--line); border-radius:999px;
+  color: var(--ink); text-decoration:none; transition: all .15s ease;
+}
+.pill-nav a:hover{ background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.hero-hex{
+  aspect-ratio: 3/4; border-radius: 4px; position:relative; overflow:hidden;
+  box-shadow: 0 20px 40px -20px rgba(27,27,25,0.18);
+  background: var(--amber);
+  background-image:
+    linear-gradient(30deg, rgba(0,0,0,0.08) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.08) 87.5%, rgba(0,0,0,0.08)),
+    linear-gradient(150deg, rgba(0,0,0,0.08) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.08) 87.5%, rgba(0,0,0,0.08)),
+    linear-gradient(30deg, rgba(0,0,0,0.08) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.08) 87.5%, rgba(0,0,0,0.08)),
+    linear-gradient(150deg, rgba(0,0,0,0.08) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.08) 87.5%, rgba(0,0,0,0.08)),
+    linear-gradient(60deg, rgba(255,255,255,0.06) 25%, transparent 25.5%, transparent 75%, rgba(255,255,255,0.06) 75%, rgba(255,255,255,0.06));
+  background-size: 42px 74px;
+  background-position: 0 0, 0 0, 21px 37px, 21px 37px, 0 0;
+  display:flex; align-items:flex-end; padding:1rem;
+}
+.hero-hex span{
+  font-family: var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em;
+  background: rgba(27,27,25,0.6); color:#fff; padding:.25rem .6rem; border-radius:3px;
+}
+
+.section-mc{ padding: 4.5rem 0; }
+.section-title{ font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight:600; margin-bottom:.5rem; }
+.section-kicker{ font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.14em; color: var(--bronze); }
+
+/* ---- impressions ---- */
+.sheet-wrap{ display:grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
+@media (max-width: 767px){ .sheet-wrap{ grid-template-columns: repeat(2,1fr);} }
+.sheet{
+  aspect-ratio: 4/5; border-radius:4px; border:1px solid var(--line); position:relative; overflow:hidden;
+  display:flex; align-items:flex-end; padding:.85rem;
+  background-size: 30px 52px;
+  background-image:
+    linear-gradient(30deg, rgba(0,0,0,0.10) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.10) 87.5%, rgba(0,0,0,0.10)),
+    linear-gradient(150deg, rgba(0,0,0,0.10) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.10) 87.5%, rgba(0,0,0,0.10)),
+    linear-gradient(30deg, rgba(0,0,0,0.10) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.10) 87.5%, rgba(0,0,0,0.10)),
+    linear-gradient(150deg, rgba(0,0,0,0.10) 12%, transparent 12.5%, transparent 87%, rgba(0,0,0,0.10) 87.5%, rgba(0,0,0,0.10));
+  background-position: 0 0, 0 0, 15px 26px, 15px 26px;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.sheet:hover{ box-shadow: 0 14px 26px -16px rgba(27,27,25,0.28); transform: translateY(-3px); }
+.sheet span{
+  font-family: var(--font-mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.05em;
+  background: rgba(255,255,255,0.9); color: var(--ink); padding:.2rem .5rem; border-radius:3px;
+}
+
+.usp-strip{ display:grid; grid-template-columns: repeat(5,1fr); gap:1.5rem; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:2.25rem 0; }
+@media (max-width: 991px){ .usp-strip{ grid-template-columns: repeat(2,1fr);} }
+.usp-icon{ width:40px;height:40px;border-radius:999px; background: var(--paper-2); border:1px solid var(--line); color: var(--bronze); display:flex;align-items:center;justify-content:center;margin-bottom:.75rem; }
+.usp-num{ font-family: var(--font-mono); font-size:1.35rem; font-weight:600; }
+.usp-label{ font-size:.85rem; color: rgba(27,27,25,0.6); }
+
+.variant-card{ border-radius:6px; overflow:hidden; border:1px solid var(--line); background:#fff; }
+.variant-swatch{ height:120px; }
+.variant-body{ padding:.85rem 1rem 1.1rem; }
+.variant-pattern{ font-family: var(--font-mono); font-size:.68rem; text-transform:uppercase; color: var(--bronze); letter-spacing:.06em; }
+.variant-name{ font-weight:600; margin-top:.15rem; }
+
+.spec-card{ border:1px solid var(--line); border-radius:6px; padding:1.25rem; height:100%; }
+.spec-card .mono{ font-size:1.1rem; font-weight:600; }
+.spec-card .label{ font-size:.78rem; color: rgba(27,27,25,0.55); margin-top:.15rem; }
+
+.process-step{ display:flex; gap:1rem; margin-bottom:1.75rem; }
+.process-num{
+  font-family: var(--font-mono); font-size:.78rem; color: var(--bronze);
+  border:1px solid var(--bronze); border-radius:999px; width:34px;height:34px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.accordion-mc .accordion-item{ background: transparent; border-color: var(--line); }
+.accordion-mc .accordion-button{ background: transparent; color: var(--ink); font-weight:600; box-shadow:none; }
+.accordion-mc .accordion-button:not(.collapsed){ color: var(--bronze); }
+.accordion-mc .accordion-body{ color: rgba(27,27,25,0.62); }
+
+.cta-mc{ background: var(--graphite); color: #F5F4F1; padding: 4rem 0; border-radius: 6px; }
+.cta-mc h2{ color: #fff; }
+.btn-amber{ background: var(--amber); border-color: var(--amber); color:#fff; }
+.btn-amber:hover{ background:#a86f20; border-color:#a86f20; color:#fff; }
+
+.footer-mc{ background: var(--graphite); color: rgba(245,244,241,0.65); padding: 3.5rem 0 2rem; }
+.footer-mc h4{ color:#fff; font-family: var(--font-mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem;}
+.footer-mc a{ color: rgba(245,244,241,0.65); text-decoration:none; }
+.footer-mc a:hover{ color:#fff; }
+.footer-social a{ width:36px;height:36px;border-radius:999px;border:1px solid rgba(245,244,241,0.25); display:inline-flex;align-items:center;justify-content:center;margin-right:.5rem; }
+
+.disclaimer-banner{ background:#FBF3E4; border:1px solid #E9D9B4; border-radius:6px; padding:.85rem 1.1rem; font-size:.85rem; color:#6b5525; }
+
+@media (min-width:992px){ .col-lg-2-4{ flex:0 0 20%; max-width:20%; } }
+</style>
+</head>
+<body>
+
+<div class="container-xl pt-3">
+  <div class="disclaimer-banner"><i class="ti ti-info-circle me-1"></i> Mockup notice: finishes, dimensions, and every number on this page are placeholders for layout purposes — swap in MetaComb's verified spec sheet before this goes live, especially anything load-bearing or fire/acoustic-rated.</div>
+</div>
+
+<!-- HERO -->
+<section class="hero-mc">
+  <div class="container-xl">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <span class="eyebrow"><i class="ti ti-hexagon"></i> Honeycomb composite, built from reclaimed cardboard</span>
+        <h1>A panel core made<br>from the cardboard<br>your jobsite throws out.</h1>
+        <p class="lead">MetaComb turns reclaimed corrugated cardboard into a patented honeycomb composite core — lighter than conventional board, made in the USA, and engineered for both decorative and structural use.</p>
+        <div class="pill-nav">
+          <a href="#impressions">Impressions</a>
+          <a href="#overview">Product overview</a>
+          <a href="#made">How it's made</a>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="hero-hex"><span>Decorative · Amber</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hexrule"><svg viewBox="0 0 1200 20" preserveAspectRatio="none"><g fill="none" stroke="rgba(27,27,25,0.14)" stroke-width="1">
+<path d="M0,10 L15,2 L30,10 L45,2 L60,10 L75,2 L90,10 L105,2 L120,10 L135,2 L150,10 L165,2 L180,10 L195,2 L210,10 L225,2 L240,10 L255,2 L270,10 L285,2 L300,10 L315,2 L330,10 L345,2 L360,10 L375,2 L390,10 L405,2 L420,10 L435,2 L450,10 L465,2 L480,10 L495,2 L510,10 L525,2 L540,10 L555,2 L570,10 L585,2 L600,10 L615,2 L630,10 L645,2 L660,10 L675,2 L690,10 L705,2 L720,10 L735,2 L750,10 L765,2 L780,10 L795,2 L810,10 L825,2 L840,10 L855,2 L870,10 L885,2 L900,10 L915,2 L930,10 L945,2 L960,10 L975,2 L990,10 L1005,2 L1020,10 L1035,2 L1050,10 L1065,2 L1080,10 L1095,2 L1110,10 L1125,2 L1140,10 L1155,2 L1170,10 L1185,2 L1200,10"/>
+</g></svg></div>
+
+<!-- IMPRESSIONS -->
+<section class="section-mc" id="impressions">
+  <div class="container-xl">
+    <div class="section-kicker">01 / Impressions</div>
+    <h2 class="section-title mb-4">One core, two product lines</h2>
+    <div class="sheet-wrap">
+      <div class="sheet" style="background-color:#E7E3D8;"><span>Decorative · Clear</span></div>
+      <div class="sheet" style="background-color:#C7CDCB;"><span>Decorative · Frost</span></div>
+      <div class="sheet" style="background-color:#C98A2C;"><span>Decorative · Amber</span></div>
+      <div class="sheet" style="background-color:#8A5A2A;"><span>Decorative · Bronze</span></div>
+      <div class="sheet" style="background-color:#9CA0A0;"><span>CSIP · 2&Prime; Core</span></div>
+      <div class="sheet" style="background-color:#7C807F;"><span>CSIP · 3&Prime; Core</span></div>
+      <div class="sheet" style="background-color:#4A4C4D;"><span>CSIP · 4&Prime; Core</span></div>
+      <div class="sheet" style="background-color:#2B2E2E;"><span>CSIP · 6&Prime; Core</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section-mc" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);" id="overview">
+  <div class="container-xl">
+    <div class="section-kicker">02 / Product overview</div>
+    <h2 class="section-title mb-4">What the honeycomb core does for you</h2>
+
+    <div class="usp-strip mb-5">
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-recycle"></i></div>
+        <div class="usp-num">Reclaimed core</div>
+        <div class="usp-label">honeycomb core built from reclaimed corrugated cardboard</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-feather"></i></div>
+        <div class="usp-num">Lightweight</div>
+        <div class="usp-label">substantially lighter than incumbent rigid-panel materials</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-certificate"></i></div>
+        <div class="usp-num">Patented process</div>
+        <div class="usp-label">proprietary manufacturing process, produced in the USA</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-building-factory-2"></i></div>
+        <div class="usp-num">Two product lines</div>
+        <div class="usp-label">decorative resin panels and structural insulated panels</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-leaf"></i></div>
+        <div class="usp-num">Lower footprint</div>
+        <div class="usp-label">produced at lower cost with a smaller environmental impact</div>
+      </div>
+    </div>
+
+    <h3 class="h4 mb-1">Decorative Resin Panels — 5 finishes</h3>
+    <p class="text-secondary mb-4">Lightweight, translucent honeycomb-core panels for interior decorative finish and light-diffusing applications.</p>
+    <div class="row row-cards g-3 mb-5">
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#E7E3D8;"></div><div class="variant-body"><div class="variant-pattern">Decorative</div><div class="variant-name">Clear</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#C7CDCB;"></div><div class="variant-body"><div class="variant-pattern">Decorative</div><div class="variant-name">Frost</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#C98A2C;"></div><div class="variant-body"><div class="variant-pattern">Decorative</div><div class="variant-name">Amber</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#4A4C4D;"></div><div class="variant-body"><div class="variant-pattern">Decorative</div><div class="variant-name">Smoke</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#8A5A2A;"></div><div class="variant-body"><div class="variant-pattern">Decorative</div><div class="variant-name">Bronze</div></div></div></div>
+    </div>
+
+    <h3 class="h4 mb-1">Composite Structural Insulated Panels (CSIP)</h3>
+    <p class="text-secondary mb-4">Rigid, load-bearing honeycomb-core panels for sound-insulated wall partitions, sandwich panel assemblies, and modular structures.</p>
+    <div class="row row-cards g-3">
+      <div class="col-6 col-md-3"><div class="spec-card"><div class="mono">2&Prime; core</div><div class="label">Partition &amp; interior wall assemblies</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-card"><div class="mono">3&Prime; core</div><div class="label">Sound-insulated wall partitions</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-card"><div class="mono">4&Prime; core</div><div class="label">Composite sandwich panel assemblies</div></div></div>
+      <div class="col-6 col-md-3"><div class="spec-card"><div class="mono">6&Prime; core</div><div class="label">Modular structure assemblies</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT'S MADE -->
+<section class="section-mc" id="made">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="section-kicker">03 / How it's made</div>
+        <h2 class="section-title mb-3">From jobsite cardboard to a load-bearing core</h2>
+        <p class="text-secondary mb-4">MetaComb's process was born from watching corrugated cardboard pile up at construction sites — and building a patented way to turn it into a structural material instead of landfill waste.</p>
+        <a href="#" class="btn btn-outline-dark"><i class="ti ti-file-description me-1"></i> Request the spec sheet</a>
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+        <div class="process-step">
+          <div class="process-num mono">01</div>
+          <div><strong>Source.</strong> Reclaimed corrugated cardboard is collected instead of routed to landfill or a conventional recycling stream.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">02</div>
+          <div><strong>Form.</strong> The cardboard is shaped into a honeycomb core using MetaComb's patented manufacturing process.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">03</div>
+          <div><strong>Laminate.</strong> The core is bonded to facing skins — resin sheets for decorative panels, structural facings for CSIP.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">04</div>
+          <div><strong>Finish.</strong> Panels are trimmed to size and finished for either interior decorative use or structural assembly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hexrule" style="background:var(--paper-2);"><svg viewBox="0 0 1200 20" preserveAspectRatio="none"><g fill="none" stroke="rgba(27,27,25,0.14)" stroke-width="1">
+<path d="M0,10 L15,18 L30,10 L45,18 L60,10 L75,18 L90,10 L105,18 L120,10 L135,18 L150,10 L165,18 L180,10 L195,18 L210,10 L225,18 L240,10 L255,18 L270,10 L285,18 L300,10 L315,18 L330,10 L345,18 L360,10 L375,18 L390,10 L405,18 L420,10 L435,18 L450,10 L465,18 L480,10 L495,18 L510,10 L525,18 L540,10 L555,18 L570,10 L585,18 L600,10 L615,18 L630,10 L645,18 L660,10 L675,18 L690,10 L705,18 L720,10 L735,18 L750,10 L765,18 L780,10 L795,18 L810,10 L825,18 L840,10 L855,18 L870,10 L885,18 L900,10 L915,18 L930,10 L945,18 L960,10 L975,18 L990,10 L1005,18 L1020,10 L1035,18 L1050,10 L1065,18 L1080,10 L1095,18 L1110,10 L1125,18 L1140,10 L1155,18 L1170,10 L1185,18 L1200,10"/>
+</g></svg></div>
+
+<!-- FAQ -->
+<section class="section-mc" style="background:var(--paper-2);">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="section-kicker">04 / Questions</div>
+        <h2 class="section-title">Before you specify it</h2>
+        <p class="text-secondary">What architects, builders, and fabricators usually ask us first.</p>
+      </div>
+      <div class="col-lg-7 offset-lg-1">
+        <div class="accordion accordion-mc" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">What's the difference between the two product lines?</button></h3>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Decorative Resin Panels are lightweight and translucent, built for interior finish work. CSIP is a rigid, load-bearing version of the same honeycomb core, built for wall partitions and modular assemblies.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Is CSIP rated for load-bearing walls?</button></h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">CSIP is engineered for load-bearing and sound-insulated wall assemblies. Bring your structural engineer in early — final ratings depend on core thickness, facing material, and your assembly design.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Where is MetaComb material made?</button></h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">MetaComb is developed and produced in the United States, out of Boston's Seaport District.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Is the manufacturing process patented?</button></h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. MetaComb holds a utility patent covering its manufacturing process, with additional patents in progress.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Can I get a sample before ordering?</button></h3>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes — MetaComb currently takes small-batch orders and can provide samples of both product lines. Reach out to the team to arrange one.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-mc">
+  <div class="container-xl">
+    <div class="cta-mc text-center">
+      <div class="section-kicker" style="color:var(--amber);">Stay in the loop</div>
+      <h2 class="mb-2">Follow MetaComb's next demonstration project</h2>
+      <p style="color:rgba(245,244,241,0.7);" class="mb-4">Occasional updates on new finishes, patents, and projects — including our upcoming decorative panel installation.</p>
+      <form class="d-flex justify-content-center gap-2 flex-wrap" onsubmit="return false;">
+        <input type="email" class="form-control" style="max-width:280px;" placeholder="you@studio.com">
+        <button class="btn btn-amber">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-mc">
+  <div class="container-xl">
+    <div class="row g-4 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="font-display" style="color:#fff; font-size:1.1rem; font-weight:600;">MetaComb</div>
+        <p class="small mt-2 mb-0">Honeycomb composite panels, engineered in Boston's Seaport District.</p>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Product</h4>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#overview">Decorative panels</a>
+          <a href="#overview">CSIP</a>
+          <a href="#made">How it's made</a>
+          <a href="#">Spec sheet</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Company</h4>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#">About</a>
+          <a href="#">Patents</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Follow</h4>
+        <div class="footer-social">
+          <a href="#"><i class="ti ti-brand-instagram"></i></a>
+          <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+          <a href="#"><i class="ti ti-brand-x"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-3 small" style="border-top:1px solid rgba(245,244,241,0.15); color:rgba(245,244,241,0.5);">
+      © 2026 MetaComb Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
+</body>
+</html>

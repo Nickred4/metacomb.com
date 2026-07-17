@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulp Panels — Reclaimed Paper Waste Panels | Metacomb</title>
+
+<link rel="preconnect" href="https://rsms.me">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler-marketing.min.css">
+
+<style>
+:root{
+  --paper:   #F1EAD9;
+  --paper-2: #E7DCC3;
+  --ink:     #221D16;
+  --kraft:   #A9835B;
+  --rust:    #B2461E;
+  --moss:    #57624A;
+  --pulp-pink:#C98B7A;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+h1,h2,h3,.font-display{
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.mono{ font-family: var(--font-mono); letter-spacing: 0.02em; }
+
+/* ---- torn paper divider (signature element) ---- */
+.torn{
+  position: relative;
+  height: 34px;
+  width: 100%;
+  display:block;
+}
+.torn svg{ width:100%; height:100%; display:block; }
+
+/* ---- hero ---- */
+.hero-pulp{
+  background:
+    radial-gradient(120% 140% at 15% -10%, rgba(178,70,30,0.10), transparent 55%),
+    radial-gradient(90% 120% at 100% 0%, rgba(87,98,74,0.14), transparent 50%),
+    var(--paper-2);
+  border-bottom: 1px solid rgba(34,29,22,0.08);
+  padding: 5.5rem 0 3.5rem;
+}
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+}
+.hero-pulp h1{
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.02;
+  margin: 0.9rem 0 1.1rem;
+}
+.hero-pulp p.lead{
+  max-width: 46ch;
+  color: rgba(34,29,22,0.72);
+  font-size: 1.05rem;
+}
+.pill-nav{
+  display:flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.pill-nav a{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .5rem 1rem;
+  border: 1px solid rgba(34,29,22,0.18);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all .15s ease;
+}
+.pill-nav a:hover{ background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---- section rhythm ---- */
+.section-pulp{ padding: 4.5rem 0; }
+.section-title{
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+.section-kicker{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--moss);
+}
+
+/* ---- impressions: scattered sheets ---- */
+.sheet-wrap{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1.5rem 1.25rem;
+}
+@media (max-width: 767px){ .sheet-wrap{ grid-template-columns: repeat(2,1fr);} }
+.sheet{
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px -12px rgba(34,29,22,0.35);
+  position: relative;
+  overflow:hidden;
+  transform: rotate(var(--r,0deg));
+  transition: transform .25s ease, box-shadow .25s ease;
+  display:flex; align-items:flex-end;
+  padding: .85rem;
+}
+.sheet:hover{ transform: rotate(0deg) translateY(-4px); box-shadow: 0 18px 34px -14px rgba(34,29,22,0.45); }
+.sheet span{
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: rgba(255,255,255,0.92);
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  background: rgba(34,29,22,0.35);
+  padding: .2rem .5rem;
+  border-radius: 3px;
+}
+.sheet:nth-child(1){ --r:-2deg; background: linear-gradient(160deg,#C98B7A,#A9835B); }
+.sheet:nth-child(2){ --r:1.5deg; background: linear-gradient(160deg,#57624A,#3f4736); }
+.sheet:nth-child(3){ --r:-1deg; background: linear-gradient(160deg,#B2461E,#7c2f14); }
+.sheet:nth-child(4){ --r:2deg; background: linear-gradient(160deg,#E7DCC3,#A9835B); }
+.sheet:nth-child(5){ --r:1deg; background: linear-gradient(160deg,#7c2f14,#221D16); }
+.sheet:nth-child(6){ --r:-2.5deg; background: linear-gradient(160deg,#A9835B,#57624A); }
+.sheet:nth-child(7){ --r:2.5deg; background: linear-gradient(160deg,#C98B7A,#7c2f14); }
+.sheet:nth-child(8){ --r:-1.5deg; background: linear-gradient(160deg,#3f4736,#221D16); }
+
+/* ---- USP strip ---- */
+.usp-strip{
+  display:grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 1.5rem;
+  border-top: 1px solid rgba(34,29,22,0.12);
+  border-bottom: 1px solid rgba(34,29,22,0.12);
+  padding: 2.25rem 0;
+}
+@media (max-width: 991px){ .usp-strip{ grid-template-columns: repeat(2,1fr);} }
+.usp-item{ text-align:left; }
+.usp-icon{
+  width: 40px; height:40px;
+  border-radius: 999px;
+  background: var(--moss);
+  color: var(--paper);
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom: .75rem;
+}
+.usp-num{ font-family: var(--font-mono); font-size: 1.5rem; font-weight:600; }
+.usp-label{ font-size: .85rem; color: rgba(34,29,22,0.65); }
+
+/* ---- product variant cards ---- */
+.variant-card{
+  border-radius: 6px;
+  overflow:hidden;
+  border: 1px solid rgba(34,29,22,0.1);
+  background: #fff;
+}
+.variant-swatch{
+  height: 120px;
+  position: relative;
+}
+.variant-swatch::after{
+  content:"";
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0 6px, transparent 6px 12px);
+}
+.variant-body{ padding: .85rem 1rem 1.1rem; }
+.variant-pattern{ font-family: var(--font-mono); font-size:.68rem; text-transform:uppercase; color: var(--moss); letter-spacing:.06em; }
+.variant-name{ font-weight:600; margin-top:.15rem; }
+
+/* ---- process ---- */
+.process-step{ display:flex; gap:1rem; margin-bottom: 1.75rem; }
+.process-num{
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--rust);
+  border: 1px solid var(--rust);
+  border-radius: 999px;
+  width: 34px; height:34px;
+  flex: none;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ---- accordion tweaks ---- */
+.accordion-pulp .accordion-item{ background: transparent; border-color: rgba(34,29,22,0.14); }
+.accordion-pulp .accordion-button{
+  background: transparent; color: var(--ink); font-weight: 600; box-shadow:none;
+}
+.accordion-pulp .accordion-button:not(.collapsed){ color: var(--rust); }
+.accordion-pulp .accordion-body{ color: rgba(34,29,22,0.72); }
+
+/* ---- CTA ---- */
+.cta-pulp{
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4rem 0;
+  border-radius: 6px;
+}
+.cta-pulp h2{ color: var(--paper); }
+.btn-rust{
+  background: var(--rust); border-color: var(--rust); color: #fff;
+}
+.btn-rust:hover{ background:#8f3616; border-color:#8f3616; color:#fff; }
+
+/* ---- footer ---- */
+.footer-pulp{
+  background: var(--ink);
+  color: rgba(241,234,217,0.7);
+  padding: 3.5rem 0 2rem;
+}
+.footer-pulp h4{ color: var(--paper); font-family: var(--font-mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem;}
+.footer-pulp a{ color: rgba(241,234,217,0.7); text-decoration:none; }
+.footer-pulp a:hover{ color: var(--paper); }
+.footer-social a{
+  width:36px;height:36px;border-radius:999px;border:1px solid rgba(241,234,217,0.25);
+  display:inline-flex;align-items:center;justify-content:center;margin-right:.5rem;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero-pulp">
+  <div class="container-xl">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <span class="eyebrow"><i class="ti ti-recycle"></i> 98% reclaimed paper fibre</span>
+        <h1>Panels pressed<br>from what got<br>thrown away.</h1>
+        <p class="lead">We take offcuts, misprints and pulp from paper mills and press them into rigid, load-bearing wall and surface panels. Same material, second life, zero pretending it's virgin timber.</p>
+        <div class="pill-nav">
+          <a href="#impressions">Impressions</a>
+          <a href="#overview">Product overview</a>
+          <a href="#made">How it's made</a>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="sheet" style="--r:-3deg; aspect-ratio:3/4; background:linear-gradient(160deg,#B2461E,#57624A);">
+          <span class="mono">Ridge — Rust 04</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="torn" style="background:var(--paper-2);">
+  <svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,10 L40,4 L82,16 L124,2 L168,14 L210,6 L252,18 L296,4 L338,12 L380,2 L424,16 L466,6 L508,14 L552,4 L594,18 L636,8 L678,2 L720,16 L762,6 L804,14 L846,2 L888,18 L930,8 L972,4 L1014,16 L1056,6 L1098,14 L1140,2 L1200,10 L1200,34 L0,34 Z" fill="#F1EAD9"></path></svg>
+</div>
+
+<!-- IMPRESSIONS -->
+<section class="section-pulp" id="impressions">
+  <div class="container-xl">
+    <div class="section-kicker">01 / Impressions</div>
+    <h2 class="section-title mb-4">A stack, not a swatch book</h2>
+    <div class="sheet-wrap">
+      <div class="sheet"><span>Ridge · Pink 02</span></div>
+      <div class="sheet"><span>Fold · Moss 05</span></div>
+      <div class="sheet"><span>Grain · Rust 01</span></div>
+      <div class="sheet"><span>Fold · Kraft 03</span></div>
+      <div class="sheet"><span>Grain · Ink 04</span></div>
+      <div class="sheet"><span>Ridge · Kraft 01</span></div>
+      <div class="sheet"><span>Fold · Rust 03</span></div>
+      <div class="sheet"><span>Grain · Moss 02</span></div>
+    </div>
+  </div>
+</section>
+<div class="torn"><svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,24 L40,30 L82,18 L124,32 L168,20 L210,28 L252,16 L296,30 L338,22 L380,32 L424,18 L466,28 L508,20 L552,30 L594,16 L636,26 L678,32 L720,18 L762,28 L804,20 L846,32 L888,16 L930,26 L972,30 L1014,18 L1056,28 L1098,20 L1140,32 L1200,24 L1200,0 L0,0 Z" fill="#221D16" opacity="0.04"></path></svg></div>
+
+<!-- OVERVIEW / USP + VARIANTS -->
+<section class="section-pulp" id="overview">
+  <div class="container-xl">
+    <div class="section-kicker">02 / Product overview</div>
+    <h2 class="section-title mb-4">What the fibre does for you</h2>
+
+    <div class="usp-strip mb-5">
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-recycle"></i></div>
+        <div class="usp-num">98%</div>
+        <div class="usp-label">post-industrial paper fibre by weight</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-scale"></i></div>
+        <div class="usp-num mono">7.2 kg/m²</div>
+        <div class="usp-label">areal weight — a third of MDF at the same thickness</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-flame-off"></i></div>
+        <div class="usp-num mono">B-s1,d0</div>
+        <div class="usp-label">fire classification, tested unfinished</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-droplet-half-2"></i></div>
+        <div class="usp-num mono">0 VOC</div>
+        <div class="usp-label">binder is a starch-based adhesive, no formaldehyde</div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="ti ti-arrows-diagonal"></i></div>
+        <div class="usp-num mono">2440×1220</div>
+        <div class="usp-label">standard sheet, custom sizing on request</div>
+      </div>
+    </div>
+
+    <h3 class="h4 mb-1">15 variants — 3 patterns, 5 tones each</h3>
+    <p class="text-secondary mb-4">Pattern is set by the press cycle. Tone is set by the pulp batch, not a coating, so the color runs through the panel.</p>
+
+    <div class="row row-cards g-3">
+      <!-- Ridge -->
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#7c2f14;"></div><div class="variant-body"><div class="variant-pattern">Ridge</div><div class="variant-name">Rust 01</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#C98B7A;"></div><div class="variant-body"><div class="variant-pattern">Ridge</div><div class="variant-name">Pink 02</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#A9835B;"></div><div class="variant-body"><div class="variant-pattern">Ridge</div><div class="variant-name">Kraft 03</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#57624A;"></div><div class="variant-body"><div class="variant-pattern">Ridge</div><div class="variant-name">Moss 04</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#221D16;"></div><div class="variant-body"><div class="variant-pattern">Ridge</div><div class="variant-name">Ink 05</div></div></div></div>
+      <!-- Fold -->
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#B2461E;"></div><div class="variant-body"><div class="variant-pattern">Fold</div><div class="variant-name">Rust 01</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#D9A493;"></div><div class="variant-body"><div class="variant-pattern">Fold</div><div class="variant-name">Pink 02</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#C3A377;"></div><div class="variant-body"><div class="variant-pattern">Fold</div><div class="variant-name">Kraft 03</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#6E7C5D;"></div><div class="variant-body"><div class="variant-pattern">Fold</div><div class="variant-name">Moss 04</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#3f4736;"></div><div class="variant-body"><div class="variant-pattern">Fold</div><div class="variant-name">Ink 05</div></div></div></div>
+      <!-- Grain -->
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#8f3616;"></div><div class="variant-body"><div class="variant-pattern">Grain</div><div class="variant-name">Rust 01</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#B87A68;"></div><div class="variant-body"><div class="variant-pattern">Grain</div><div class="variant-name">Pink 02</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#8f6a41;"></div><div class="variant-body"><div class="variant-pattern">Grain</div><div class="variant-name">Kraft 03</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#3f4736;"></div><div class="variant-body"><div class="variant-pattern">Grain</div><div class="variant-name">Moss 04</div></div></div></div>
+      <div class="col-6 col-md-4 col-lg-2-4"><div class="variant-card"><div class="variant-swatch" style="background:#100D08;"></div><div class="variant-body"><div class="variant-pattern">Grain</div><div class="variant-name">Ink 05</div></div></div></div>
+    </div>
+  </div>
+</section>
+<div class="torn" style="background:var(--paper-2);"><svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,10 L40,4 L82,16 L124,2 L168,14 L210,6 L252,18 L296,4 L338,12 L380,2 L424,16 L466,6 L508,14 L552,4 L594,18 L636,8 L678,2 L720,16 L762,6 L804,14 L846,2 L888,18 L930,8 L972,4 L1014,16 L1056,6 L1098,14 L1140,2 L1200,10 L1200,34 L0,34 Z" fill="#F1EAD9"></path></svg></div>
+
+<!-- HOW IT'S MADE -->
+<section class="section-pulp" id="made" style="background:var(--paper-2);">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="section-kicker">03 / How it's made</div>
+        <h2 class="section-title mb-3">Four steps, one fibre, no new trees</h2>
+        <p class="text-secondary mb-4">The process stays close to how paper itself is made — we just stop before it becomes a sheet you'd write on, and press it into something you can build with.</p>
+        <a href="#" class="btn btn-outline-dark"><i class="ti ti-file-description me-1"></i> Read the full spec sheet</a>
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+        <div class="process-step">
+          <div class="process-num mono">01</div>
+          <div><strong>Source.</strong> Offcuts and misprints are collected directly from partner paper mills before they reach a landfill or incinerator.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">02</div>
+          <div><strong>Pulp.</strong> Fibre is re-pulped with water only — no bleach, no virgin pulp blended in to "improve" the look.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">03</div>
+          <div><strong>Press.</strong> A starch binder is added and the pulp is heat-pressed into the pattern die: Ridge, Fold, or Grain.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num mono">04</div>
+          <div><strong>Cure.</strong> Panels air-cure for 72 hours, are trimmed to size, and are ready to ship flat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="torn"><svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,24 L40,30 L82,18 L124,32 L168,20 L210,28 L252,16 L296,30 L338,22 L380,32 L424,18 L466,28 L508,20 L552,30 L594,16 L636,26 L678,32 L720,18 L762,28 L804,20 L846,32 L888,16 L930,26 L972,30 L1014,18 L1056,28 L1098,20 L1140,32 L1200,24 L1200,0 L0,0 Z" fill="#E7DCC3"></path></svg></div>
+
+<!-- FAQ -->
+<section class="section-pulp">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="section-kicker">04 / Questions</div>
+        <h2 class="section-title">Before you specify it</h2>
+        <p class="text-secondary">The things architects and contractors actually ask us, in the order they usually ask them.</p>
+      </div>
+      <div class="col-lg-7 offset-lg-1">
+        <div class="accordion accordion-pulp" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Is it structural, or a cladding only?</button></h3>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Panels are rated for interior partition and surface use. They are not a load-bearing structural material — treat them the way you'd treat a rigid MDF or fibreboard panel.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Can it get wet?</button></h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">It tolerates humidity fine. Standing water or direct exposure will swell the fibre over time, so we don't recommend it for wet-room floors or exterior use without a sealant.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">How is it cut and fixed on site?</button></h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Standard woodworking tools — track saw, router, CNC. It fixes with construction adhesive, concealed clips, or screws with a countersunk cap depending on the pattern.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Does the color fade?</button></h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Because tone comes from the pulp itself rather than a surface coating, scratches and edge-wear show the same color underneath instead of a different substrate.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">What's the lead time?</button></h3>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Stocked tones ship in 5–7 business days. Custom sizing or a tone outside the standard 15 adds roughly 3 weeks for a pulp run.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-pulp">
+  <div class="container-xl">
+    <div class="cta-pulp text-center">
+      <div class="section-kicker" style="color:var(--pulp-pink);">Stay in the loop</div>
+      <h2 class="mb-2">Get notified when new tones ship</h2>
+      <p style="color:rgba(241,234,217,0.7);" class="mb-4">One email a month, mostly about which mills we're sourcing from next.</p>
+      <form class="d-flex justify-content-center gap-2 flex-wrap" onsubmit="return false;">
+        <input type="email" class="form-control" style="max-width:280px;" placeholder="you@studio.com">
+        <button class="btn btn-rust">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-pulp">
+  <div class="container-xl">
+    <div class="row g-4 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="font-display" style="color:var(--paper); font-size:1.1rem; font-weight:600;">Metacomb</div>
+        <p class="small mt-2 mb-0">Sustainable construction materials, pressed from what was already made.</p>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Product</h4>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#overview">Panel variants</a>
+          <a href="#made">How it's made</a>
+          <a href="#">Spec sheet</a>
+          <a href="#">Sample kit</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Company</h4>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#">About</a>
+          <a href="#">Sourcing partners</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Follow</h4>
+        <div class="footer-social">
+          <a href="#"><i class="ti ti-brand-instagram"></i></a>
+          <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+          <a href="#"><i class="ti ti-brand-x"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-3 small" style="border-top:1px solid rgba(241,234,217,0.15); color:rgba(241,234,217,0.5);">
+      © 2026 Metacomb. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<style>
+/* 5-up grid helper for variant cards on large screens */
+@media (min-width:992px){
+  .col-lg-2-4{ flex: 0 0 20%; max-width: 20%; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
+</body>
+</html>
