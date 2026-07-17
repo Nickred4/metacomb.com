@@ -1,0 +1,96 @@
+<!-- 
+  MetaComb — Order a Sample section (mailto version)
+  Drop this in to replace the current "Order a sample" block / "Sign up" button.
+  Update REPLACE_WITH_YOUR_EMAIL below with the address that should receive orders.
+-->
+
+<section id="order-sample" style="padding: 4rem 1.5rem; max-width: 640px; margin: 0 auto;">
+  <p style="text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; color: #888; margin-bottom: .5rem;">
+    MetaComb Honeycomb Panels
+  </p>
+  <h2 style="font-size: 1.75rem; margin-bottom: .75rem;">Order a sample</h2>
+  <p style="color: #555; margin-bottom: 2rem;">
+    Not sure which finish is right for you? Order a physical sample for just $20 and see the quality
+    up close before committing to your project. Your $20 will be credited toward your final order once
+    you're ready to move forward.
+  </p>
+
+  <form id="sampleOrderForm" style="display: grid; gap: 1rem;">
+    <div>
+      <label for="fullName" style="display:block; font-size:.85rem; margin-bottom:.25rem;">Full name *</label>
+      <input type="text" id="fullName" name="fullName" required
+        style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
+    </div>
+
+    <div>
+      <label for="email" style="display:block; font-size:.85rem; margin-bottom:.25rem;">Email *</label>
+      <input type="email" id="email" name="email" required
+        style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
+    </div>
+
+    <div>
+      <label for="phone" style="display:block; font-size:.85rem; margin-bottom:.25rem;">Phone</label>
+      <input type="tel" id="phone" name="phone"
+        style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
+    </div>
+
+    <div>
+      <label for="address" style="display:block; font-size:.85rem; margin-bottom:.25rem;">Shipping address *</label>
+      <textarea id="address" name="address" rows="3" required
+        style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; resize:vertical;"
+        placeholder="Street, City, State, Zip"></textarea>
+    </div>
+
+    <div>
+      <label for="paymentNote" style="display:block; font-size:.85rem; margin-bottom:.25rem;">
+        Payment note
+      </label>
+      <textarea id="paymentNote" name="paymentNote" rows="2"
+        style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; resize:vertical;"
+        placeholder="e.g. 'Will pay $20 via Venmo/Zelle on request' — payment is arranged after we confirm your order"></textarea>
+    </div>
+
+    <button type="submit"
+      style="margin-top:.5rem; padding:.85rem 1.5rem; background:#1a1a1a; color:#fff; border:none; border-radius:6px; font-size:1rem; cursor:pointer;">
+      Send sample request — $20
+    </button>
+
+    <p style="font-size:.75rem; color:#999; margin-top:-.5rem;">
+      This opens your email client with the order details filled in. Nothing is charged automatically —
+      we'll follow up to confirm payment and finalize your order.
+    </p>
+  </form>
+</section>
+
+<script>
+  document.getElementById('sampleOrderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var fullName = document.getElementById('fullName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var address = document.getElementById('address').value.trim();
+    var paymentNote = document.getElementById('paymentNote').value.trim();
+
+    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
+    var subject = 'Sample Order — $20 (' + fullName + ')';
+
+    var bodyLines = [
+      'New sample order request:',
+      '',
+      'Name: ' + fullName,
+      'Email: ' + email,
+      'Phone: ' + (phone || '—'),
+      'Shipping address: ' + address,
+      'Payment note: ' + (paymentNote || '—'),
+      '',
+      'Order amount: $20 (credited toward final order)'
+    ];
+
+    var mailtoLink = 'mailto:' + recipient +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+    window.location.href = mailtoLink;
+  });
+</script>
