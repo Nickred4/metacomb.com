@@ -10,8 +10,8 @@
   </p>
   <h2 style="font-size: 1.75rem; margin-bottom: .75rem;">Order a sample</h2>
   <p style="color: #555; margin-bottom: 2rem;">
-    Not sure which finish is right for you? Order a physical sample for just $20 and see the quality
-    up close before committing to your project. Your $20 will be credited toward your final order once
+    Not sure which finish is right for you? Order a physical sample for just $40 and see the quality
+    up close before committing to your project. Your $40 will be credited toward your final order once
     you're ready to move forward.
   </p>
 
@@ -47,12 +47,12 @@
       </label>
       <textarea id="paymentNote" name="paymentNote" rows="2"
         style="width:100%; padding:.6rem .75rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; resize:vertical;"
-        placeholder="e.g. 'Will pay $20 via Venmo/Zelle on request' — payment is arranged after we confirm your order"></textarea>
+        placeholder="e.g. 'Will pay $40 via Venmo/Zelle on request' — payment is arranged after we confirm your order"></textarea>
     </div>
 
     <button type="submit"
       style="margin-top:.5rem; padding:.85rem 1.5rem; background:#1a1a1a; color:#fff; border:none; border-radius:6px; font-size:1rem; cursor:pointer;">
-      Send sample request — $20
+      Send sample request — $40
     </button>
 
     <p style="font-size:.75rem; color:#999; margin-top:-.5rem;">
@@ -73,7 +73,7 @@
     var paymentNote = document.getElementById('paymentNote').value.trim();
 
     var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
-    var subject = 'Sample Order — $20 (' + fullName + ')';
+    var subject = 'Sample Order — $40 (' + fullName + ')';
 
     var bodyLines = [
       'New sample order request:',
@@ -84,7 +84,7 @@
       'Shipping address: ' + address,
       'Payment note: ' + (paymentNote || '—'),
       '',
-      'Order amount: $20 (credited toward final order)'
+      'Order amount: $40 (credited toward final order)'
     ];
 
     var mailtoLink = 'mailto:' + recipient +

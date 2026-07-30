@@ -551,7 +551,7 @@ a{ color:inherit; }
   <div class="container-xl">
     <div class="join-inner">
       <h2>Order a sample</h2>
-      <p>Not sure which finish  is right for you? Order a physical sample for just $20 and see the quality up close before committing to your project. Your $20 will be credited toward your final order once you're ready to move forward.</p>
+      <p>Not sure which finish  is right for you? Order a physical sample for just $40 and see the quality up close before committing to your project. Your $40 will be credited toward your final order once you're ready to move forward.</p>
 
       <form class="join-form" id="sampleOrderForm">
         <div>
@@ -574,7 +574,7 @@ a{ color:inherit; }
           <label for="paymentNote">Payment note</label>
           <textarea id="paymentNote" name="paymentNote" rows="2" placeholder="e.g. will pay via Venmo/Zelle on request"></textarea>
         </div>
-        <button type="submit">Send sample request — $20</button>
+        <button type="submit">Send sample request — $40</button>
         <p class="fine">This opens your email client with your order details filled in. Nothing is charged automatically — we'll follow up to confirm payment.</p>
       </form>
     </div>
@@ -626,7 +626,7 @@ a{ color:inherit; }
     var paymentNote = document.getElementById('paymentNote').value.trim();
 
     var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
-    var subject = 'Sample Order — $20 (' + fullName + ')';
+    var subject = 'Sample Order — $40 (' + fullName + ')';
 
     var bodyLines = [
       'New sample order request:',
@@ -637,7 +637,7 @@ a{ color:inherit; }
       'Shipping address: ' + address,
       'Payment note: ' + (paymentNote || '—'),
       '',
-      'Order amount: $20 (credited toward final order)'
+      'Order amount: $40 (credited toward final order)'
     ];
 
     var mailtoLink = 'mailto:' + recipient +
