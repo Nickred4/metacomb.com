@@ -155,12 +155,19 @@ a{ color:inherit; }
 .join-inner p{ color:var(--gray-1); font-size:1.05rem; margin-bottom:2rem; max-width:52ch; }
 .join-form{ display:grid; gap:.9rem; max-width:480px; }
 .join-form input,
-.join-form textarea{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:.9rem 1rem; font-size:.95rem; font-family:inherit; width:100%; }
+.join-form textarea,
+.join-form select{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:.9rem 1rem; font-size:.95rem; font-family:inherit; width:100%; }
 .join-form textarea{ resize:vertical; }
+.join-form select{ appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239C9B95' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; cursor:pointer; }
 .join-form label{ font-size:.8rem; font-weight:600; color:var(--gray-1); margin-bottom:.35rem; display:block; }
 .join-form button{ background:var(--ink); color:#fff; border:none; border-radius:2px; padding:.9rem 2rem; font-weight:700; font-size:.95rem; justify-self:start; }
 .join-form button:hover{ background:var(--amber); }
 .join-form .fine{ font-size:.78rem; color:var(--gray-2); margin-top:-.3rem; }
+
+.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+@media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+.contact-block h2{ font-weight:800; font-size:clamp(1.6rem,3vw,2.2rem); letter-spacing:-0.02em; margin-bottom:.75rem; }
+.contact-block p{ color:var(--gray-1); font-size:1rem; margin-bottom:1.5rem; max-width:48ch; }
 
 .footer-mc{ background:var(--ink); color:rgba(255,255,255,0.6); padding:4rem 0 2rem; }
 .footer-mc .brand{ color:#fff; }
@@ -173,10 +180,6 @@ a{ color:inherit; }
 </style>
 </head>
 <body>
-
-<!--<div class="container-xl pt-3">
-  <div class="disclaimer"><i class="ti ti-info-circle me-1"></i> Mockup notice: finishes, dimensions and stats here are placeholders for layout — replace with MetaComb's verified spec sheet, especially anything load-bearing or fire/acoustic-rated, before this goes live.</div>
-</div>-->
 
 <div class="container-xl">
   <div class="topnav">
@@ -543,6 +546,7 @@ a{ color:inherit; }
   </div>
 </section>
 
+<!-- ===================== SAMPLE ORDER ===================== -->
 <section class="join-section">
   <svg class="join-hex" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#E3E1DA" stroke-width="1.5">
@@ -558,7 +562,7 @@ a{ color:inherit; }
   <div class="container-xl">
     <div class="join-inner">
       <h2>Order a sample</h2>
-      <p>Not sure which finish  is right for you? Order a physical sample for just $40 and see the quality up close before committing to your project. Your $40 will be credited toward your final order once you're ready to move forward.</p>
+      <p>Not sure which finish is right for you? Order a physical sample for just $40 and see the quality up close before committing to your project. Your $40 will be credited toward your final order once you're ready to move forward.</p>
 
       <form class="join-form" id="sampleOrderForm">
         <div>
@@ -584,6 +588,80 @@ a{ color:inherit; }
         <button type="submit">Send sample request — $40</button>
         <p class="fine">This opens your email client with your order details filled in. Nothing is charged automatically — we'll follow up to confirm payment.</p>
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CALLBACK + EMAIL FORMS ===================== -->
+<section class="section" id="contact-forms">
+  <div class="container-xl">
+    <div class="contact-grid">
+
+      <!-- FREE INQUIRY CALLBACK -->
+      <div class="contact-block">
+        <h2>Request a free callback</h2>
+        <p>Have questions about MetaComb materials? Leave your details and we'll call you back at a time that works.</p>
+        <form class="join-form" id="callbackForm">
+          <div>
+            <label for="cbName">Full name</label>
+            <input type="text" id="cbName" name="cbName" required>
+          </div>
+          <div>
+            <label for="cbPhone">Phone number</label>
+            <input type="tel" id="cbPhone" name="cbPhone" required>
+          </div>
+          <div>
+            <label for="cbReason">Reason for inquiry</label>
+            <select id="cbReason" name="cbReason" required>
+              <option value="" disabled selected>Select a reason</option>
+              <option value="Product info">Product information</option>
+              <option value="Pricing / quote">Pricing / quote</option>
+              <option value="Custom project">Custom project</option>
+              <option value="Partnership">Partnership opportunity</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="cbWhen">Preferred callback time</label>
+            <select id="cbWhen" name="cbWhen" required>
+              <option value="" disabled selected>Select a time</option>
+              <option value="Morning (9–12)">Morning (9 AM – 12 PM)</option>
+              <option value="Afternoon (12–3)">Afternoon (12 – 3 PM)</option>
+              <option value="Late afternoon (3–5)">Late afternoon (3 – 5 PM)</option>
+              <option value="Anytime">Anytime</option>
+            </select>
+          </div>
+          <button type="submit">Request callback</button>
+          <p class="fine">This opens your email client with your callback details. We'll reach out within one business day.</p>
+        </form>
+      </div>
+
+      <!-- SEND AN EMAIL -->
+      <div class="contact-block">
+        <h2>Send us an email</h2>
+        <p>Prefer to write? Drop us a message and we'll get back to you as soon as possible.</p>
+        <form class="join-form" id="emailForm">
+          <div>
+            <label for="emName">Full name</label>
+            <input type="text" id="emName" name="emName" required>
+          </div>
+          <div>
+            <label for="emEmail">Your email</label>
+            <input type="email" id="emEmail" name="emEmail" required>
+          </div>
+          <div>
+            <label for="emSubject">Subject</label>
+            <input type="text" id="emSubject" name="emSubject" required placeholder="e.g. Question about CSIP panels">
+          </div>
+          <div>
+            <label for="emMessage">Message</label>
+            <textarea id="emMessage" name="emMessage" rows="5" required placeholder="Tell us what you're working on or what you'd like to know..."></textarea>
+          </div>
+          <button type="submit">Send email</button>
+          <p class="fine">This opens your email client with your message ready to send.</p>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>
@@ -623,6 +701,7 @@ a{ color:inherit; }
 
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
 <script>
+  // SAMPLE ORDER FORM
   document.getElementById('sampleOrderForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -645,6 +724,61 @@ a{ color:inherit; }
       'Payment note: ' + (paymentNote || '—'),
       '',
       'Order amount: $40 (credited toward final order)'
+    ];
+
+    var mailtoLink = 'mailto:' + recipient +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+    window.location.href = mailtoLink;
+  });
+
+  // CALLBACK FORM
+  document.getElementById('callbackForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById('cbName').value.trim();
+    var phone = document.getElementById('cbPhone').value.trim();
+    var reason = document.getElementById('cbReason').value;
+    var when = document.getElementById('cbWhen').value;
+
+    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
+    var subject = 'Callback Request — ' + name;
+
+    var bodyLines = [
+      'New callback request:',
+      '',
+      'Name: ' + name,
+      'Phone: ' + phone,
+      'Reason: ' + reason,
+      'Preferred time: ' + when
+    ];
+
+    var mailtoLink = 'mailto:' + recipient +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+    window.location.href = mailtoLink;
+  });
+
+  // EMAIL FORM
+  document.getElementById('emailForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById('emName').value.trim();
+    var email = document.getElementById('emEmail').value.trim();
+    var subjectLine = document.getElementById('emSubject').value.trim();
+    var message = document.getElementById('emMessage').value.trim();
+
+    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
+    var subject = subjectLine + ' (from ' + name + ')';
+
+    var bodyLines = [
+      message,
+      '',
+      '—',
+      name,
+      email
     ];
 
     var mailtoLink = 'mailto:' + recipient +
