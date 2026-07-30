@@ -150,10 +150,10 @@ a{ color:inherit; }
 
 .join-section{ position:relative; background:var(--hex-fill); overflow:hidden; padding:5rem 0; }
 .join-hex{ position:absolute; inset:0; z-index:0; opacity:.9; }
-.join-inner{ position:relative; z-index:1; max-width:640px; }
+.join-inner{ position:relative; z-index:1; }
 .join-inner h2{ font-weight:800; font-size:clamp(2rem,4vw,3rem); letter-spacing:-0.02em; margin-bottom:1.25rem; }
 .join-inner p{ color:var(--gray-1); font-size:1.05rem; margin-bottom:2rem; max-width:52ch; }
-.join-form{ display:grid; gap:.9rem; max-width:480px; }
+.join-form{ display:grid; gap:.9rem; }
 .join-form input,
 .join-form textarea,
 .join-form select{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:.9rem 1rem; font-size:.95rem; font-family:inherit; width:100%; }
@@ -164,10 +164,10 @@ a{ color:inherit; }
 .join-form button:hover{ background:var(--amber); }
 .join-form .fine{ font-size:.78rem; color:var(--gray-2); margin-top:-.3rem; }
 
-.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
-@media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
-.contact-block h2{ font-weight:800; font-size:clamp(1.6rem,3vw,2.2rem); letter-spacing:-0.02em; margin-bottom:.75rem; }
-.contact-block p{ color:var(--gray-1); font-size:1rem; margin-bottom:1.5rem; max-width:48ch; }
+.forms-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem; position:relative; z-index:1; }
+@media (max-width:1100px){ .forms-grid{ grid-template-columns:1fr; max-width:520px; } }
+.form-block h3{ font-weight:800; font-size:1.35rem; letter-spacing:-0.02em; margin-bottom:.5rem; }
+.form-block > p{ color:var(--gray-1); font-size:.92rem; margin-bottom:1.5rem; }
 
 .footer-mc{ background:var(--ink); color:rgba(255,255,255,0.6); padding:4rem 0 2rem; }
 .footer-mc .brand{ color:#fff; }
@@ -546,8 +546,8 @@ a{ color:inherit; }
   </div>
 </section>
 
-<!-- ===================== SAMPLE ORDER ===================== -->
-<section class="join-section">
+<!-- ===================== ALL THREE FORMS ===================== -->
+<section class="join-section" id="contact-forms">
   <svg class="join-hex" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#E3E1DA" stroke-width="1.5">
       <polygon points="200,40 340,120 340,280 200,360 60,280 60,120"/>
@@ -561,46 +561,45 @@ a{ color:inherit; }
   </svg>
   <div class="container-xl">
     <div class="join-inner">
-      <h2>Order a sample</h2>
-      <p>Not sure which finish is right for you? Order a physical sample for just $40 and see the quality up close before committing to your project. Your $40 will be credited toward your final order once you're ready to move forward.</p>
-
-      <form class="join-form" id="sampleOrderForm">
-        <div>
-          <label for="fullName">Full name</label>
-          <input type="text" id="fullName" name="fullName" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone">
-        </div>
-        <div>
-          <label for="address">Shipping address</label>
-          <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, zip"></textarea>
-        </div>
-        <div>
-          <label for="paymentNote">Payment note</label>
-          <textarea id="paymentNote" name="paymentNote" rows="2" placeholder="e.g. will pay via Venmo/Zelle on request"></textarea>
-        </div>
-        <button type="submit">Send sample request — $40</button>
-        <p class="fine">This opens your email client with your order details filled in. Nothing is charged automatically — we'll follow up to confirm payment.</p>
-      </form>
+      <div class="eyebrow-label">Get in touch</div>
+      <h2 style="margin-bottom:2.5rem;">How can we help?</h2>
     </div>
-  </div>
-</section>
+    <div class="forms-grid">
 
-<!-- ===================== CALLBACK + EMAIL FORMS ===================== -->
-<section class="section" id="contact-forms">
-  <div class="container-xl">
-    <div class="contact-grid">
+      <!-- 1 · SAMPLE ORDER -->
+      <div class="form-block">
+        <h3>Order a sample</h3>
+        <p>Get a physical sample for $40 — credited toward your final order.</p>
+        <form class="join-form" id="sampleOrderForm">
+          <div>
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div>
+            <label for="address">Shipping address</label>
+            <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, zip"></textarea>
+          </div>
+          <div>
+            <label for="paymentNote">Payment note</label>
+            <textarea id="paymentNote" name="paymentNote" rows="2" placeholder="e.g. will pay via Venmo/Zelle on request"></textarea>
+          </div>
+          <button type="submit">Send sample request — $40</button>
+          <p class="fine">Opens your email client with order details filled in. We'll follow up to confirm payment.</p>
+        </form>
+      </div>
 
-      <!-- FREE INQUIRY CALLBACK -->
-      <div class="contact-block">
-        <h2>Request a free callback</h2>
-        <p>Have questions about MetaComb materials? Leave your details and we'll call you back at a time that works.</p>
+      <!-- 2 · FREE CALLBACK -->
+      <div class="form-block">
+        <h3>Request a free callback</h3>
+        <p>Leave your details and we'll call you back at a time that works.</p>
         <form class="join-form" id="callbackForm">
           <div>
             <label for="cbName">Full name</label>
@@ -632,14 +631,14 @@ a{ color:inherit; }
             </select>
           </div>
           <button type="submit">Request callback</button>
-          <p class="fine">This opens your email client with your callback details. We'll reach out within one business day.</p>
+          <p class="fine">Opens your email client with callback details. We'll reach out within one business day.</p>
         </form>
       </div>
 
-      <!-- SEND AN EMAIL -->
-      <div class="contact-block">
-        <h2>Send us an email</h2>
-        <p>Prefer to write? Drop us a message and we'll get back to you as soon as possible.</p>
+      <!-- 3 · SEND AN EMAIL -->
+      <div class="form-block">
+        <h3>Send us an email</h3>
+        <p>Prefer to write? Drop us a message and we'll get back to you.</p>
         <form class="join-form" id="emailForm">
           <div>
             <label for="emName">Full name</label>
@@ -658,7 +657,7 @@ a{ color:inherit; }
             <textarea id="emMessage" name="emMessage" rows="5" required placeholder="Tell us what you're working on or what you'd like to know..."></textarea>
           </div>
           <button type="submit">Send email</button>
-          <p class="fine">This opens your email client with your message ready to send.</p>
+          <p class="fine">Opens your email client with your message ready to send.</p>
         </form>
       </div>
 
@@ -688,8 +687,8 @@ a{ color:inherit; }
       </div>
       <div class="col-6 col-lg-3">
         <h4>Contact</h4>
-        <a href="#">Contact</a>
-        <a href="#">Sample request</a>
+        <a href="#contact-forms">Contact</a>
+        <a href="#contact-forms">Sample request</a>
         <a href="#">Press &amp; media</a>
       </div>
     </div>
@@ -704,88 +703,61 @@ a{ color:inherit; }
   // SAMPLE ORDER FORM
   document.getElementById('sampleOrderForm').addEventListener('submit', function (e) {
     e.preventDefault();
-
     var fullName = document.getElementById('fullName').value.trim();
     var email = document.getElementById('email').value.trim();
     var phone = document.getElementById('phone').value.trim();
     var address = document.getElementById('address').value.trim();
     var paymentNote = document.getElementById('paymentNote').value.trim();
-
     var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
     var subject = 'Sample Order — $40 (' + fullName + ')';
-
     var bodyLines = [
-      'New sample order request:',
-      '',
+      'New sample order request:','',
       'Name: ' + fullName,
       'Email: ' + email,
       'Phone: ' + (phone || '—'),
       'Shipping address: ' + address,
       'Payment note: ' + (paymentNote || '—'),
-      '',
-      'Order amount: $40 (credited toward final order)'
+      '','Order amount: $40 (credited toward final order)'
     ];
-
-    var mailtoLink = 'mailto:' + recipient +
+    window.location.href = 'mailto:' + recipient +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-    window.location.href = mailtoLink;
   });
 
   // CALLBACK FORM
   document.getElementById('callbackForm').addEventListener('submit', function (e) {
     e.preventDefault();
-
     var name = document.getElementById('cbName').value.trim();
     var phone = document.getElementById('cbPhone').value.trim();
     var reason = document.getElementById('cbReason').value;
     var when = document.getElementById('cbWhen').value;
-
     var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
     var subject = 'Callback Request — ' + name;
-
     var bodyLines = [
-      'New callback request:',
-      '',
+      'New callback request:','',
       'Name: ' + name,
       'Phone: ' + phone,
       'Reason: ' + reason,
       'Preferred time: ' + when
     ];
-
-    var mailtoLink = 'mailto:' + recipient +
+    window.location.href = 'mailto:' + recipient +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-    window.location.href = mailtoLink;
   });
 
   // EMAIL FORM
   document.getElementById('emailForm').addEventListener('submit', function (e) {
     e.preventDefault();
-
     var name = document.getElementById('emName').value.trim();
     var email = document.getElementById('emEmail').value.trim();
     var subjectLine = document.getElementById('emSubject').value.trim();
     var message = document.getElementById('emMessage').value.trim();
-
     var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
     var subject = subjectLine + ' (from ' + name + ')';
-
-    var bodyLines = [
-      message,
-      '',
-      '—',
-      name,
-      email
-    ];
-
-    var mailtoLink = 'mailto:' + recipient +
+    var bodyLines = [message,'','—',name,email];
+    window.location.href = 'mailto:' + recipient +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-    window.location.href = mailtoLink;
   });
 </script>
 </body>
