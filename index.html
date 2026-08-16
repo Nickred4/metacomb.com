@@ -27,7 +27,22 @@ body{ background:#fff; color:var(--ink); font-family:'Inter',sans-serif; -webkit
 .bleed{ margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); width:100vw; }
 a{ color:inherit; }
 
-.topnav{ display:flex; align-items:center; justify-content:space-between; padding:1.5rem 0; }
+/* ===== STICKY NAV ===== */
+.topnav-wrap{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.topnav-wrap.scrolled{
+  border-bottom-color:var(--line);
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.topnav{ display:flex; align-items:center; justify-content:space-between; padding:1rem 0; }
 .brand{ font-weight:800; font-size:1.4rem; letter-spacing:-0.02em; }
 .brand small{ display:block; font-weight:400; font-size:.68rem; color:var(--gray-1); letter-spacing:0; }
 .topnav-links{ display:flex; gap:2.25rem; font-size:.95rem; }
@@ -177,10 +192,96 @@ a{ color:inherit; }
 .footer-mc a:hover{ color:#fff; }
 
 .disclaimer{ background:#FBF3E4; border:1px solid #E9D9B4; border-radius:4px; padding:.85rem 1.1rem; font-size:.85rem; color:#6b5525; }
+
+/* ===== COLLAPSIBLE SECTIONS ===== */
+.collapsible-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.collapsible-header .toggle-icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  color:var(--gray-2);
+  flex-shrink:0;
+  transition:transform .3s ease, background .15s ease;
+}
+.collapsible-header:hover .toggle-icon{
+  background:var(--hex-fill);
+  color:var(--ink);
+}
+.collapsible-body{
+  overflow:hidden;
+  transition:max-height .4s ease, opacity .3s ease;
+  max-height:3000px;
+  opacity:1;
+}
+.collapsible-body.collapsed{
+  max-height:0 !important;
+  opacity:0;
+  pointer-events:none;
+}
+.collapsible-header .toggle-icon.rotated{
+  transform:rotate(180deg);
+}
+
+/* ===== COLLAPSIBLE FORM BLOCKS ===== */
+.form-block-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  margin-bottom:.5rem;
+}
+.form-block-header h3{ margin-bottom:0; }
+.form-block-header .toggle-icon{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+  color:var(--gray-2);
+  flex-shrink:0;
+  transition:transform .3s ease, background .15s ease;
+}
+.form-block-header:hover .toggle-icon{
+  background:#fff;
+  color:var(--ink);
+}
+.form-block-body{
+  overflow:hidden;
+  transition:max-height .4s ease, opacity .3s ease;
+  max-height:1500px;
+  opacity:1;
+}
+.form-block-body.collapsed{
+  max-height:0 !important;
+  opacity:0;
+  pointer-events:none;
+}
+.form-block-header .toggle-icon.rotated{
+  transform:rotate(180deg);
+}
 </style>
 </head>
 <body>
 
+<!-- ===== STICKY NAV ===== -->
+<div class="topnav-wrap">
 <div class="container-xl">
   <div class="topnav">
     <div class="brand" style="display:flex;align-items:center;gap:.6rem;">
@@ -228,6 +329,7 @@ a{ color:inherit; }
     </div>
   </div>
 </div>
+</div>
 
 <section class="hero">
   <img src="header.jpg" alt="MetaComb corrugated cardboard composite panel" class="hero-bg">
@@ -250,570 +352,18 @@ a{ color:inherit; }
   </div>
 </section>
 
-<section class="section">
+<!-- ===== INTRO (collapsible) ===== -->
+<section class="section" data-collapsible>
   <div class="container-xl">
-    <div class="row">
-      <div class="col-lg-8">
-        <p class="text-secondary mb-4">MetaComb™ material is a sustainable construction material offering a combination of function, pleasing aesthetics and relative low cost. MetaComb™ technology and product mitigates adverse environmental impacts by off-setting resource-demanding traditional building products and systems made out of wood and other non-renewable sources.</p>
-        <p class="text-secondary mb-4">Environmental benefits from repurposing an environmentally troublesome waste material into a value-added, sustainable building material and product are great. The manufacturing process used in the production of MetaComb™ material is low-cost, straight forward and easily-scalable.</p>
-        <p class="text-secondary mb-0">MetaComb™ products can be easily engineered and integrated into an existing material and/or building systems. Also, the material handling does not require any additional training or skills then working with plywood, or other composites. Moreover, there are a wide range of complimentary materials and/or systems available now, and projected in the future, that can be integrated into our product.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="impressions">
-  <div class="container-xl">
-    <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
-    <h2 class="section-h">Impressions</h2>
-  </div>
-  <div class="gallery-row bleed">
-    <div class="gallery-cell ribbed" style="background-color:#E7E3D8;"><span class="tag">Decorative · Clear</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#C98A2C;"><span class="tag">Decorative · Amber</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#8A5A2A;"><span class="tag">Decorative · Bronze</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#2B2E2E;"><span class="tag">CSIP · Graphite</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#C7CDCB;"><span class="tag">Decorative · Frost</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#9CA0A0;"><span class="tag">CSIP · Cement</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#4A4C4D;"><span class="tag">Decorative · Smoke</span></div>
-    <div class="gallery-cell ribbed" style="background-color:#7C807F;"><span class="tag">CSIP · Slate</span></div>
-  </div>
-</section>
-
-<section class="section" id="overview">
-  <div class="container-xl">
-    <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
-    <h2 class="section-h">Product overview</h2>
-
-    <div class="usp-row">
+    <div class="collapsible-header" onclick="toggleSection(this)">
       <div>
-        <div class="usp-icon"><i class="ti ti-recycle"></i></div>
-        <div class="usp-label">Waste as a resource</div>
-        <div class="usp-stat">Built from reclaimed corrugated cardboard.</div>
+        <div class="eyebrow-label">MetaComb</div>
+        <h2 class="section-h" style="margin-bottom:0;">Introduction</h2>
       </div>
-      <div>
-        <div class="usp-icon"><i class="ti ti-feather"></i></div>
-        <div class="usp-label">Weight</div>
-        <div class="usp-stat">Substantially lighter than incumbent rigid-panel materials.</div>
-      </div>
-      <div>
-        <div class="usp-icon"><i class="ti ti-certificate"></i></div>
-        <div class="usp-label">Manufacturing</div>
-        <div class="usp-stat">Patented process, produced in the USA.</div>
-      </div>
-      <div>
-        <div class="usp-icon"><i class="ti ti-building-factory-2"></i></div>
-        <div class="usp-label">Product lines</div>
-        <div class="usp-stat">Decorative resin panels and structural insulated panels.</div>
-      </div>
-      <div>
-        <div class="usp-icon"><i class="ti ti-leaf"></i></div>
-        <div class="usp-label">Footprint</div>
-        <div class="usp-stat">Lower cost with a smaller environmental impact.</div>
-      </div>
+      <span class="toggle-icon"><i class="ti ti-chevron-up"></i></span>
     </div>
-
-    <h3 class="h4 mb-1 mt-5">Decorative Resin Panels — 5 finishes</h3>
-    <p class="text-secondary mb-4">Lightweight, translucent honeycomb-core panels for interior decorative finish and light-diffusing applications.</p>
-    <div class="row row-cards g-0 mb-5" style="border-top:1px solid var(--line); border-left:1px solid var(--line);">
-      <div class="col-6 col-md-4 col-lg-2" style="border-right:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="variant-tile"><div class="variant-swatch" style="background:#E7E3D8;"></div><div class="variant-meta"><div class="variant-pattern">Decorative</div><div class="variant-name">Clear</div></div></div></div>
-      <div class="col-6 col-md-4 col-lg-2" style="border-right:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="variant-tile"><div class="variant-swatch" style="background:#C7CDCB;"></div><div class="variant-meta"><div class="variant-pattern">Decorative</div><div class="variant-name">Frost</div></div></div></div>
-      <div class="col-6 col-md-4 col-lg-2" style="border-right:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="variant-tile"><div class="variant-swatch" style="background:#C98A2C;"></div><div class="variant-meta"><div class="variant-pattern">Decorative</div><div class="variant-name">Amber</div></div></div></div>
-      <div class="col-6 col-md-4 col-lg-2" style="border-right:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="variant-tile"><div class="variant-swatch" style="background:#4A4C4D;"></div><div class="variant-meta"><div class="variant-pattern">Decorative</div><div class="variant-name">Smoke</div></div></div></div>
-      <div class="col-6 col-md-4 col-lg-2" style="border-right:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="variant-tile"><div class="variant-swatch" style="background:#8A5A2A;"></div><div class="variant-meta"><div class="variant-pattern">Decorative</div><div class="variant-name">Bronze</div></div></div></div>
-    </div>
-
-    <h3 class="h4 mb-1">Composite Structural Insulated Panels (CSIP)</h3>
-    <p class="text-secondary mb-4">Rigid, load-bearing honeycomb-core panels for sound-insulated wall partitions, sandwich panel assemblies, and modular structures.</p>
-    <div class="row row-cards g-3">
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">2″ core</div><div class="desc">Partition &amp; interior wall assemblies</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">3″ core</div><div class="desc">Sound-insulated wall partitions</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">4″ core</div><div class="desc">Composite sandwich panel assemblies</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">6″ core</div><div class="desc">Modular structure assemblies</div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="made" style="background:var(--hex-fill);">
-  <div class="container-xl">
-    <div class="row">
-      <div class="col-lg-5">
-        <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
-        <h2 class="section-h">How it's made</h2>
-        <p class="text-secondary mb-4" style="max-width:42ch;">MetaComb's process was born from watching corrugated cardboard pile up at construction sites — a patented way to turn it into a structural material instead of landfill waste.</p>
-        <a href="#" class="btn btn-dark" style="border-radius:2px;">Request the spec sheet</a>
-      </div>
-      <div class="col-lg-6 offset-lg-1">
-        <div class="process-step"><div class="process-num">01</div><div><strong>Source.</strong> Reclaimed corrugated cardboard is collected instead of routed to landfill or a conventional recycling stream.</div></div>
-        <div class="process-step"><div class="process-num">02</div><div><strong>Form.</strong> The cardboard is shaped into a honeycomb core using MetaComb's patented manufacturing process.</div></div>
-        <div class="process-step"><div class="process-num">03</div><div><strong>Laminate.</strong> The core is bonded to facing skins — resin sheets for decorative panels, structural facings for CSIP.</div></div>
-        <div class="process-step"><div class="process-num">04</div><div><strong>Finish.</strong> Panels are trimmed to size and finished for interior decorative use or structural assembly.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container-xl">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="eyebrow-label">MetaComb Honeycomb Panels</div>
-        <h2 class="section-h">Questions</h2>
-        <p class="text-secondary">What architects, builders, and fabricators usually ask us first.</p>
-      </div>
-      <div class="col-lg-7 offset-lg-1">
-        <details class="faq-item" open>
-          <summary>What's the difference between the two product lines? <span class="plus">+</span></summary>
-          <p>Decorative Resin Panels are lightweight and translucent, built for interior finish work. CSIP is a rigid, load-bearing version of the same honeycomb core, built for wall partitions and modular assemblies.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is CSIP rated for load-bearing walls? <span class="plus">+</span></summary>
-          <p>CSIP is engineered for load-bearing and sound-insulated wall assemblies. Bring your structural engineer in early — final ratings depend on core thickness, facing material, and assembly design.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where is MetaComb material made? <span class="plus">+</span></summary>
-          <p>MetaComb is developed and produced in the United States, out of Boston's Seaport District.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is the manufacturing process patented? <span class="plus">+</span></summary>
-          <p>Yes. MetaComb holds a utility patent covering its manufacturing process, with additional patents in progress.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I get a sample before ordering? <span class="plus">+</span></summary>
-          <p>Yes — MetaComb currently takes small-batch orders and can provide samples of both product lines. Reach out to the team to arrange one.</p>
-        </details>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== ABOUT ===================== -->
-<section class="section" style="background:var(--hex-fill);">
-  <div class="container-xl">
-    <div class="eyebrow-label">About MetaComb</div>
-    <h2 class="section-h">About</h2>
-  </div>
-
-  <div class="container-xl section-sub" id="about-company" style="border-top:none;">
-    <h3 class="subsection-h">Company</h3>
-    <p class="text-secondary" style="max-width:65ch;">MetaComb Inc. is a materials company based in Boston's Seaport District, developing a patented honeycomb composite made from reclaimed corrugated cardboard. Replace with your real company narrative — founding story, mission, headquarters, and stage of the business.</p>
-  </div>
-
-  <div class="container-xl section-sub" id="about-technology">
-    <h3 class="subsection-h">Technology</h3>
-    <p class="text-secondary" style="max-width:65ch;">MetaComb's core manufacturing process converts waste cardboard into a rigid, lightweight honeycomb structure that can be laminated into decorative or structural panels. Replace with a technical summary of the process, IP, and what makes it different from incumbent materials.</p>
-  </div>
-
-  <div class="container-xl section-sub" id="about-team">
-    <h3 class="subsection-h">Team</h3>
-    <div class="row row-cards g-4 mt-1">
-      <div class="col-6 col-md-3">
-        <div class="team-card">
-          <div class="team-avatar"><i class="ti ti-user"></i></div>
-          <div class="team-name">Name Placeholder</div>
-          <div class="team-role">Role / Title</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="team-card">
-          <div class="team-avatar"><i class="ti ti-user"></i></div>
-          <div class="team-name">Name Placeholder</div>
-          <div class="team-role">Role / Title</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="team-card">
-          <div class="team-avatar"><i class="ti ti-user"></i></div>
-          <div class="team-name">Name Placeholder</div>
-          <div class="team-role">Role / Title</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="team-card">
-          <div class="team-avatar"><i class="ti ti-user"></i></div>
-          <div class="team-name">Name Placeholder</div>
-          <div class="team-role">Role / Title</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-xl section-sub" id="about-benefits">
-    <h3 class="subsection-h">Benefits</h3>
-    <div class="row row-cards g-4 mt-1">
-      <div class="col-md-4">
-        <div class="benefit-tile">
-          <i class="ti ti-recycle"></i>
-          <div class="h4">Sustainable</div>
-          <p class="text-secondary mb-0">Repurposes reclaimed corrugated cardboard instead of virgin wood-based materials.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="benefit-tile">
-          <i class="ti ti-feather"></i>
-          <div class="h4">Lightweight</div>
-          <p class="text-secondary mb-0">Substantially lighter than comparable rigid-panel building materials.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="benefit-tile">
-          <i class="ti ti-coin"></i>
-          <div class="h4">Low cost</div>
-          <p class="text-secondary mb-0">Simple, scalable manufacturing process keeps material costs competitive.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== MARKETS ===================== -->
-<section class="section">
-  <div class="container-xl">
-    <div class="eyebrow-label">Where MetaComb is used</div>
-    <h2 class="section-h">Markets</h2>
-  </div>
-
-  <div class="container-xl section-sub" id="markets-installations" style="border-top:none;">
-    <h3 class="subsection-h">Installations</h3>
-    <p class="text-secondary mb-4" style="max-width:65ch;">Photos and details of completed MetaComb installations go here — decorative interior applications, wall assemblies, and structural projects.</p>
-    <div class="row row-cards g-3">
-      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
-      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
-      <div class="col-md-4"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Installation</div><div class="case-title">Project Name</div><div class="case-desc">Short description of the installation and application.</div></div></div></div>
-    </div>
-  </div>
-
-  <div class="container-xl section-sub" id="markets-case-studies">
-    <h3 class="subsection-h">Case Studies</h3>
-    <p class="text-secondary mb-4" style="max-width:65ch;">Deeper write-ups on specific projects — the problem, why MetaComb was chosen, and the outcome.</p>
-    <div class="row row-cards g-3">
-      <div class="col-md-6"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Case Study</div><div class="case-title">Client / Project Name</div><div class="case-desc">Summary of the challenge, MetaComb's role, and measurable results.</div></div></div></div>
-      <div class="col-md-6"><div class="case-card"><div class="case-img"></div><div class="case-body"><div class="case-tag">Case Study</div><div class="case-title">Client / Project Name</div><div class="case-desc">Summary of the challenge, MetaComb's role, and measurable results.</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TECHNOLOGY ===================== -->
-<section class="section" style="background:var(--hex-fill);">
-  <div class="container-xl">
-    <div class="eyebrow-label">MetaComb Technology</div>
-    <h2 class="section-h">Technology</h2>
-  </div>
-
-  <!-- OVERVIEW -->
-  <div class="container-xl section-sub" id="tech-overview" style="border-top:none;">
-    <h3 class="subsection-h">Overview</h3>
-    <div class="row">
-      <div class="col-lg-7">
-        <p class="text-secondary mb-4">MetaComb's technology converts post-consumer corrugated cardboard — one of the most abundant and undervalued waste streams in commercial construction — into a rigid, lightweight honeycomb core material. The process replaces conventional wood-fiber, foam, and mineral-based panel substrates with a composite that is structurally competitive, significantly lighter, and made entirely from reclaimed feedstock.</p>
-        <p class="text-secondary mb-0">The honeycomb geometry distributes load across thousands of cell walls, giving the finished panel a strength-to-weight ratio that approaches aluminum honeycomb at a fraction of the material cost. Facing skins — translucent resin for decorative applications, fiber-cement or OSB for structural — are laminated to the core under controlled pressure, producing panels that can be cut, routed, and fastened with standard woodworking tools.</p>
-      </div>
-      <div class="col-lg-4 offset-lg-1 mt-4 mt-lg-0">
-        <div class="row row-cards g-3">
-          <div class="col-6 col-lg-12"><div class="spec-tile"><div class="num" style="color:var(--amber);"><i class="ti ti-hexagon" style="font-size:1.1rem;margin-right:.35rem;"></i>Honeycomb core</div><div class="desc">Thousands of cell walls distribute load uniformly across the panel.</div></div></div>
-          <div class="col-6 col-lg-12"><div class="spec-tile"><div class="num" style="color:var(--amber);"><i class="ti ti-arrows-minimize" style="font-size:1.1rem;margin-right:.35rem;"></i>Lamination</div><div class="desc">Resin or structural facings bonded under controlled pressure.</div></div></div>
-          <div class="col-6 col-lg-12"><div class="spec-tile"><div class="num" style="color:var(--amber);"><i class="ti ti-tool" style="font-size:1.1rem;margin-right:.35rem;"></i>Fabrication</div><div class="desc">Cut, routed, and fastened with standard woodworking tools.</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PATENTS -->
-  <div class="container-xl section-sub" id="tech-patents">
-    <h3 class="subsection-h">Patents</h3>
-    <div style="display:flex;gap:2.5rem;align-items:flex-start;flex-wrap:wrap;">
-      <div style="flex:1;min-width:280px;">
-        <p class="text-secondary mb-4">MetaComb's manufacturing process is protected by a United States utility patent, with additional patents in progress. The core IP covers the method of converting corrugated cardboard into a structurally sound honeycomb geometry — including the forming, bonding, and lamination steps that give the finished panel its load-bearing characteristics.</p>
-        <div class="row row-cards g-3 mt-2">
-          <div class="col-sm-6"><div class="spec-tile"><div class="num">US utility patent</div><div class="desc">Granted — covers the core manufacturing process for honeycomb panel production from reclaimed corrugated.</div></div></div>
-          <div class="col-sm-6"><div class="spec-tile"><div class="num">Additional filings</div><div class="desc">Patents in progress covering process refinements and new product-line applications.</div></div></div>
-        </div>
-      </div>
-      <div style="flex:0 0 auto;">
-        <img src="patent.jpg" alt="United States Patent — MetaComb" style="max-width:260px;width:100%;border:1px solid var(--line);border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
-      </div>
-    </div>
-  </div>
-
-  <!-- R&D -->
-  <div class="container-xl section-sub" id="tech-rnd">
-    <h3 class="subsection-h">R&amp;D</h3>
-    <div class="row">
-      <div class="col-lg-7">
-        <p class="text-secondary mb-4">MetaComb's research and development program is focused on extending the performance envelope of the honeycomb core platform — improving fire resistance, moisture tolerance, and acoustic properties while keeping the manufacturing process simple and scalable.</p>
-        <p class="text-secondary mb-0">Current R&amp;D tracks include bio-based resin systems that eliminate petroleum-derived binders, thinner-wall core geometries that reduce material consumption without sacrificing panel stiffness, and composite facing combinations engineered for exterior-grade weather exposure. The team works with independent testing labs to validate each iteration against ASTM and ICC-ES standards before it reaches production.</p>
-      </div>
-      <div class="col-lg-4 offset-lg-1 mt-4 mt-lg-0">
-        <div class="row row-cards g-3">
-          <div class="col-12">
-            <div class="benefit-tile">
-              <i class="ti ti-flask"></i>
-              <div class="h4">Bio-based resins</div>
-              <p class="text-secondary mb-0">Developing plant-derived binder systems to replace petroleum-based adhesives in the lamination process.</p>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="benefit-tile">
-              <i class="ti ti-flame-off"></i>
-              <div class="h4">Fire &amp; moisture</div>
-              <p class="text-secondary mb-0">Testing treatment methods that improve fire resistance and moisture tolerance for broader building-code compliance.</p>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="benefit-tile">
-              <i class="ti ti-certificate-2"></i>
-              <div class="h4">Standards &amp; testing</div>
-              <p class="text-secondary mb-0">Validating panels against ASTM and ICC-ES standards through independent third-party testing labs.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PRODUCT (detail) ===================== -->
-<section class="section">
-  <div class="container-xl">
-    <div class="eyebrow-label">MetaComb Products</div>
-    <h2 class="section-h">Product</h2>
-  </div>
-
-  <div class="container-xl section-sub" id="product-examples" style="border-top:none;">
-    <h3 class="subsection-h">Examples</h3>
-    <p class="text-secondary mb-4" style="max-width:65ch;">Real-world examples of MetaComb panels in use — furniture, wall panels, packaging alternatives, or architectural details.</p>
-    <div class="gallery-row bleed">
-      <div class="gallery-cell ribbed" style="background-color:#E7E3D8;"><span class="tag">Example</span></div>
-      <div class="gallery-cell ribbed" style="background-color:#C98A2C;"><span class="tag">Example</span></div>
-      <div class="gallery-cell ribbed" style="background-color:#8A5A2A;"><span class="tag">Example</span></div>
-      <div class="gallery-cell ribbed" style="background-color:#2B2E2E;"><span class="tag">Example</span></div>
-    </div>
-  </div>
-
-  <div class="container-xl section-sub" id="product-materials">
-    <h3 class="subsection-h">MetaComb Materials</h3>
-    <p class="text-secondary mb-4" style="max-width:65ch;">Overview of the finishes and core thicknesses available across the Decorative Resin Panel and CSIP product lines.</p>
-    <div class="row row-cards g-3">
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Decorative</div><div class="desc">5 finish options, translucent core</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">CSIP</div><div class="desc">2″–6″ core thicknesses</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Core material</div><div class="desc">Reclaimed corrugated cardboard</div></div></div>
-      <div class="col-6 col-md-3"><div class="spec-tile"><div class="num">Origin</div><div class="desc">Made in the USA</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== ALL THREE FORMS ===================== -->
-<section class="join-section" id="contact-forms">
-  <svg class="join-hex" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#E3E1DA" stroke-width="1.5">
-      <polygon points="200,40 340,120 340,280 200,360 60,280 60,120"/>
-      <polygon points="480,40 620,120 620,280 480,360 340,280 340,120"/>
-      <polygon points="760,40 900,120 900,280 760,360 620,280 620,120"/>
-      <polygon points="1040,40 1180,120 1180,280 1040,360 900,280 900,120"/>
-      <polygon points="1320,40 1460,120 1460,280 1320,360 1180,280 1180,120"/>
-      <polygon points="340,280 480,360 480,520 340,600 200,520 200,360"/>
-      <polygon points="900,280 1040,360 1040,520 900,600 760,520 760,360"/>
-    </g>
-  </svg>
-  <div class="container-xl">
-    <div class="join-inner">
-      <div class="eyebrow-label">Get in touch</div>
-      <h2 style="margin-bottom:2.5rem;">How can we help?</h2>
-    </div>
-    <div class="forms-grid">
-
-      <!-- 1 · SAMPLE ORDER -->
-      <div class="form-block">
-        <h3>Order a sample</h3>
-        <p>Get a physical sample for $40 — credited toward your final order.</p>
-        <form class="join-form" id="sampleOrderForm">
-          <div>
-            <label for="fullName">Full name</label>
-            <input type="text" id="fullName" name="fullName" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div>
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          <div>
-            <label for="address">Shipping address</label>
-            <textarea id="address" name="address" rows="2" required placeholder="Street, City, State, zip"></textarea>
-          </div>
-          <div>
-            <label for="paymentNote">Payment note</label>
-            <textarea id="paymentNote" name="paymentNote" rows="2" placeholder="e.g. will pay via Venmo/Zelle on request"></textarea>
-          </div>
-          <button type="submit">Send sample request — $40</button>
-          <p class="fine">Opens your email client with order details filled in. We'll follow up to confirm payment.</p>
-        </form>
-      </div>
-
-      <!-- 2 · FREE CALLBACK -->
-      <div class="form-block">
-        <h3>Request a free callback</h3>
-        <p>Leave your details and we'll call you back at a time that works.</p>
-        <form class="join-form" id="callbackForm">
-          <div>
-            <label for="cbName">Full name</label>
-            <input type="text" id="cbName" name="cbName" required>
-          </div>
-          <div>
-            <label for="cbPhone">Phone number</label>
-            <input type="tel" id="cbPhone" name="cbPhone" required>
-          </div>
-          <div>
-            <label for="cbReason">Reason for inquiry</label>
-            <select id="cbReason" name="cbReason" required>
-              <option value="" disabled selected>Select a reason</option>
-              <option value="Product info">Product information</option>
-              <option value="Pricing / quote">Pricing / quote</option>
-              <option value="Custom project">Custom project</option>
-              <option value="Partnership">Partnership opportunity</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div>
-            <label for="cbWhen">Preferred callback time</label>
-            <select id="cbWhen" name="cbWhen" required>
-              <option value="" disabled selected>Select a time</option>
-              <option value="Morning (9–12)">Morning (9 AM – 12 PM)</option>
-              <option value="Afternoon (12–3)">Afternoon (12 – 3 PM)</option>
-              <option value="Late afternoon (3–5)">Late afternoon (3 – 5 PM)</option>
-              <option value="Anytime">Anytime</option>
-            </select>
-          </div>
-          <button type="submit">Request callback</button>
-          <p class="fine">Opens your email client with callback details. We'll reach out within one business day.</p>
-        </form>
-      </div>
-
-      <!-- 3 · SEND AN EMAIL -->
-      <div class="form-block">
-        <h3>Send us an email</h3>
-        <p>Prefer to write? Drop us a message and we'll get back to you.</p>
-        <form class="join-form" id="emailForm">
-          <div>
-            <label for="emName">Full name</label>
-            <input type="text" id="emName" name="emName" required>
-          </div>
-          <div>
-            <label for="emEmail">Your email</label>
-            <input type="email" id="emEmail" name="emEmail" required>
-          </div>
-          <div>
-            <label for="emSubject">Subject</label>
-            <input type="text" id="emSubject" name="emSubject" required placeholder="e.g. Question about CSIP panels">
-          </div>
-          <div>
-            <label for="emMessage">Message</label>
-            <textarea id="emMessage" name="emMessage" rows="5" required placeholder="Tell us what you're working on or what you'd like to know..."></textarea>
-          </div>
-          <button type="submit">Send email</button>
-          <p class="fine">Opens your email client with your message ready to send.</p>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<footer class="footer-mc" id="contact">
-  <div class="container-xl">
-    <div class="row g-4 mb-5">
-      <div class="col-12 col-lg-3">
-        <div class="brand">MetaComb<small>Honeycomb Composite Materials</small></div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <h4>Products</h4>
-        <a href="#overview">Decorative panels</a>
-        <a href="#overview">CSIP</a>
-        <a href="#made">How it's made</a>
-        <a href="#">Spec sheet</a>
-      </div>
-      <div class="col-6 col-lg-3">
-        <h4>Company</h4>
-        <a href="#about-company">About</a>
-        <a href="#tech-patents">Patents</a>
-        <a href="#">Careers</a>
-        <a href="#">News</a>
-      </div>
-      <div class="col-6 col-lg-3">
-        <h4>Contact</h4>
-        <a href="#contact-forms">Contact</a>
-        <a href="#contact-forms">Sample request</a>
-        <a href="#">Press &amp; media</a>
-      </div>
-    </div>
-    <div class="pt-4 small" style="border-top:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.4);">
-      © 2026 MetaComb Inc. All rights reserved.
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
-<script>
-  // SAMPLE ORDER FORM
-  document.getElementById('sampleOrderForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var fullName = document.getElementById('fullName').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    var address = document.getElementById('address').value.trim();
-    var paymentNote = document.getElementById('paymentNote').value.trim();
-    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
-    var subject = 'Sample Order — $40 (' + fullName + ')';
-    var bodyLines = [
-      'New sample order request:','',
-      'Name: ' + fullName,
-      'Email: ' + email,
-      'Phone: ' + (phone || '—'),
-      'Shipping address: ' + address,
-      'Payment note: ' + (paymentNote || '—'),
-      '','Order amount: $40 (credited toward final order)'
-    ];
-    window.location.href = 'mailto:' + recipient +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(bodyLines.join('\n'));
-  });
-
-  // CALLBACK FORM
-  document.getElementById('callbackForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = document.getElementById('cbName').value.trim();
-    var phone = document.getElementById('cbPhone').value.trim();
-    var reason = document.getElementById('cbReason').value;
-    var when = document.getElementById('cbWhen').value;
-    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
-    var subject = 'Callback Request — ' + name;
-    var bodyLines = [
-      'New callback request:','',
-      'Name: ' + name,
-      'Phone: ' + phone,
-      'Reason: ' + reason,
-      'Preferred time: ' + when
-    ];
-    window.location.href = 'mailto:' + recipient +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(bodyLines.join('\n'));
-  });
-
-  // EMAIL FORM
-  document.getElementById('emailForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = document.getElementById('emName').value.trim();
-    var email = document.getElementById('emEmail').value.trim();
-    var subjectLine = document.getElementById('emSubject').value.trim();
-    var message = document.getElementById('emMessage').value.trim();
-    var recipient = 'REPLACE_WITH_YOUR_EMAIL@metacomb.com';
-    var subject = subjectLine + ' (from ' + name + ')';
-    var bodyLines = [message,'','—',name,email];
-    window.location.href = 'mailto:' + recipient +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(bodyLines.join('\n'));
-  });
-</script>
-</body>
-</html>
+    <div class="collapsible-body" style="padding-top:2rem;">
+      <div class="row">
+        <div class="col-lg-8">
+          <p class="text-secondary mb-4">MetaComb™ material is a sustainable construction material offering a combination of function, pleasing aesthetics and relative low cost. MetaComb™ technology and product mitigates adverse environmental impacts by off-setting resource-demanding traditional building products and systems made out of wood and other non-renewable sources.</p>
+          <p class="text-secondary mb-4">Environmental benefits from repurposing an environmentally troublesome waste material into a value-added, sustainable building material and product are great. The manufacturing process used in the production of MetaComb™ material is low-cost, straight forward and easily-scalable.</p>
